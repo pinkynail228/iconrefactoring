@@ -1,0 +1,41 @@
+# 🏁 Icon Library Audit Walkthrough
+
+## Overview
+We have refactored the icon library to align with **Enterprise Design Standards** (similar to Uber Base Web and Material Design). This move eliminates ambiguous or slang-based names (like `x` or `kebab`) in favor of descriptive, professional terminology.
+
+## 📁 Key Deliverables
+
+| Artifact | Purpose |
+| :--- | :--- |
+| **[icon_audit.csv](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/icon_audit.csv)** | **Master Migration Map**. The authoritative source for renaming. |
+| **[semantic_naming_rules.md](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/semantic_naming_rules.md)** | **Enterprise Naming Standards**. The strict rulebook. |
+| **[inventory_summary.md](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/inventory_summary.md)** | Initial state analysis. |
+
+## 📊 Naming Strategy: Enterprise Standard
+
+We prioritized explicit, professional English terms over "developer shorthand".
+
+````carousel
+![Naming Strategy](https://placeholder.com/naming_strategy_viz)
+<!-- slide -->
+### Key Renaming Decisions
+
+| Visual | Old/Slang Name | **New Enterprise Name** | Rationale |
+| :--- | :--- | :--- | :--- |
+| **✕** | `x` | **`close`** | Professional standard for UI controls. |
+| **+** | `add` | **`plus`** | Describing the symbol (noun) to avoid action ambiguity. |
+| **🗑** | `trash` | **`delete`** | Aligning with the *function* (Uber/Material standard). |
+| **⋮** | `kebab-menu` | **`overflow`** | Standard UI component name. |
+| **🔍** | `magnifier` | **`search`** | Functional intent. |
+| **👤** | `user` | **`person`** | Generic human entity (neutral). |
+````
+
+### Standardization Stats
+-   **207 Icons Processed**
+-   **100% Kebab-case** verified.
+-   **Categorization**: Grouped into `UI`, `Navigation`, `Action`, `Status`, `Brand`.
+
+## 🚀 Migration Recommendations
+1.  **Review the CSV**: Check [icon_audit.csv](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/icon_audit.csv) to ensure the mappings fit your team's vocabulary.
+2.  **Backup**: Snapshot the `UI icons library` folder.
+3.  **Batch Rename**: Use a script to apply the `New Name` column to your files.

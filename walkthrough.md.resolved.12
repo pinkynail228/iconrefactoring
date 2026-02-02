@@ -1,0 +1,62 @@
+# Icon Library — Итоги аудита
+
+## 🎥 Демо новой страницы
+
+![Просмотр страницы с правилами именования](/Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/apple_style_preview_1770017404752.webp)
+
+---
+
+## Правила именования
+
+| # | Правило | Пример |
+|:--|:--|:--|
+| 1 | **kebab-case** | `arrow-left`, `filter-add` |
+| 2 | **object-action** | `lock-open`, `lock-closed` |
+| 3 | **flat naming** | `cisco` (не `brand-cisco`) |
+
+---
+
+## Исправленные паттерны
+
+| Было | Стало | Логика |
+|:--|:--|:--|
+| `Decrypt` | `lock-open` | Пара с `lock-closed` |
+| `Padlock grey` | `lock-closed` | Статус "заблокировано" |
+| `Padlock orange` | `lock-alert` | Отдельная иконка |
+| `brand-cisco` | `cisco` | Плоское именование |
+
+---
+
+## Visual Redesign (Awwwards Style)
+The comparison page has been completely redesigned with a premium, modern aesthetic.
+
+**Key Features:**
+*   **Sticky Navigation:** Glassmorphism-style pills for quick access to any category.
+*   **Collapsible Rules:** A compact accordion for naming conventions to keep the header clean.
+*   **Micro-interactions:** Smooth hover effects and transitions on icon cards.
+*   **Typography:** Updated to a premium font stack (Inter + JetBrains Mono).
+
+![Final Comparison View Preview](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/final_verification_preview_1770020415062.webp)
+
+## Next Steps
+1.  **Final Review**: Confirm the layout and content of [icon_comparison.html](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/icon_comparison.html).
+2.  **Approve Renaming**: Verify [icon_audit.csv](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/icon_audit.csv) one last time.
+3.  **Execute**: Run the [apply_renames.sh](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/apply_renames.sh) script to commit changes.
+
+---
+
+## Файлы
+
+| Файл | Описание |
+|:--|:--|
+| [icon_comparison.html](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/icon_comparison.html) | Страница сравнения с правилами |
+| [icon_audit.csv](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/icon_audit.csv) | CSV для Figma |
+| [icon_comparison_backup_2026-02-02.html](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/icon_comparison_backup_2026-02-02.html) | Резервная копия |
+
+---
+
+## Статистика
+
+- **207** иконок было
+- **~170** после объединения дубликатов
+- **10** категорий

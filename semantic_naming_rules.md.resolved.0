@@ -1,0 +1,36 @@
+# 🏷️ Semantic Naming Rules & Taxonomy
+
+## Core Principles
+1.  **kebab-case**: All files must use lowercase letters and hyphens (e.g., `align-center.svg`). No spaces, underscores, or camelCase.
+2.  **Semantic over Visual**: Name based on *meaning*, not just appearance (e.g., `lock-alert` instead of `padlock-orange`).
+3.  **Descriptive Hierarchy**: `[category]-[object]-[modifier]`.
+4.  **No "Copy" Suffixes**: Eliminate `-1` or ` copy`. Use meaningful variants like `-alt`, `-outline`, or `-off`.
+
+## Naming Standards by Category
+
+### Actions & UI
+-   **Add/Create**: `add` (or `plus`), `[object]-add`.
+-   **Edit**: `edit` (pencil). Variant: `edit-alt` (box/compose).
+-   **Delete**: `delete` (generic), `trash` (bin), `x` (close/cancel).
+-   **Visibility**: `eye` (show), `eye-off` (hide/password masked).
+-   **Settings**: `settings` (gear). `settings-subtle` (if specific styling).
+
+### Navigation
+-   **Arrows**: `arrow-[direction]`.
+-   **Chevrons**: `chevron-[direction]`.
+-   **Menu**: `menu` (hamburger), `kebab-menu` (vertical dots), `more-horizontal` (ellipsis).
+
+### Status & Feedback
+-   **Check**: `check` (tick).
+-   **Lock**: `lock` (closed), `lock-open` (unlocked).
+-   **Severity**: `severity-[level]` (e.g., `severity-critical`, `severity-info`).
+
+### Network & Security (Domain Specific)
+-   **NAT**: `nat-[type]` (e.g., `nat-destination`, `source-nat`).
+-   **Interfaces**: `interface-[status]` (e.g., `interface-bond-off`).
+-   **Brands**: Prefix with brand name or `brands` category tagging (e.g., `cisco`, `oracle`).
+
+## Fixed Issues
+-   **Typos**: `Attachement` → `attachment`.
+-   **Ambiguity**: `Eye` vs `New_Eye` resolved to `eye` vs `eye-outline`.
+-   **Standardization**: `Warning` / `Warning-1` → `warning` / `warning-alt`.

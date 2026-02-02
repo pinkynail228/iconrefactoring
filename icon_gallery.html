@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудит библиотеки иконок</title>
+    <style>
+        :root {
+            --bg: #f5f5f5;
+            --card-bg: #ffffff;
+            --border: #e0e0e0;
+            --text: #1a1a1a;
+            --text-muted: #666;
+            --accent: #4f8cff;
+            --group-actions: #ff6b6b;
+            --group-navigation: #4ecdc4;
+            --group-status: #ffe66d;
+            --group-files: #a29bfe;
+            --group-editor: #fd79a8;
+            --group-security: #00b894;
+            --group-brands: #e17055;
+            --group-network: #74b9ff;
+            --group-data: #55efc4;
+            --group-ui: #636e72;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 2rem;
+            line-height: 1.5;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-card strong {
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        .stat-card span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .category-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .category-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .category-count {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .icons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .icon-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .icon-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-preview {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f9f9;
+            border-radius: 4px;
+            padding: 8px;
+        }
+
+        .icon-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            /* НЕТ ИНВЕРСИИ - показываем оригинальные цвета */
+        }
+
+        .icon-name {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            word-break: break-all;
+            line-height: 1.3;
+        }
+
+        .duplicate-warning {
+            border-color: #ff6b6b !important;
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .duplicate-warning::before {
+            content: "⚠️ Дубликат";
+            font-size: 0.6rem;
+            color: #ff6b6b;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .legend {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>📦 Аудит библиотеки иконок</h1>
+    <p class="subtitle">Визуальный обзор 207 иконок, сгруппированных по смыслу</p>
+
+    <div class="stats">
+        <div class="stat-card">
+            <strong>207</strong>
+            <span>Всего иконок</span>
+        </div>
+        <div class="stat-card">
+            <strong>10</strong>
+            <span>Категорий</span>
+        </div>
+        <div class="stat-card">
+            <strong>~15</strong>
+            <span>Возможных дубликатов</span>
+        </div>
+    </div>
+
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--group-actions)"></div> Действия
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--group-navigation)"></div> Навигация
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--group-status)"></div> Статусы
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--group-files)"></div> Файлы
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--group-editor)"></div> Редактор
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--group-security)"></div> Безопасность
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--group-brands)"></div> Бренды
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--group-network)"></div> Сеть
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--group-data)"></div> Данные
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: var(--group-ui)"></div> UI общее
+        </div>
+    </div>
+
+    <div id="gallery"></div>
+
+    <script>
+        const ICON_PATH = '/Users/pnklrd/Downloads/UI icons library/';
+
+        const categoryNames = {
+            'Actions': 'Действия',
+            'Navigation': 'Навигация',
+            'Status': 'Статусы',
+            'Files': 'Файлы',
+            'Editor': 'Редактор',
+            'Security': 'Безопасность',
+            'Brands': 'Бренды',
+            'Network': 'Сеть',
+            'Data': 'Данные',
+            'UI': 'UI общее'
+        };
+
+        const icons = [
+            // Действия
+            { name: "Add.svg", category: "Actions" },
+            { name: "Add to filter.svg", category: "Actions" },
+            { name: "Add to incident.svg", category: "Actions" },
+            { name: "Clear.svg", category: "Actions" },
+            { name: "Copy.svg", category: "Actions" },
+            { name: "Create incident.svg", category: "Actions" },
+            { name: "Delete.svg", category: "Actions" },
+            { name: "Edit.svg", category: "Actions", duplicate: true },
+            { name: "Edit-1.svg", category: "Actions", duplicate: true },
+            { name: "Export.svg", category: "Actions" },
+            { name: "Export CSV.svg", category: "Actions" },
+            { name: "Import.svg", category: "Actions" },
+            { name: "Print.svg", category: "Actions" },
+            { name: "Refresh.svg", category: "Actions", duplicate: true },
+            { name: "Refresh-1.svg", category: "Actions", duplicate: true },
+            { name: "Remove from incident.svg", category: "Actions" },
+            { name: "Reset.svg", category: "Actions", duplicate: true },
+            { name: "Reset-1.svg", category: "Actions", duplicate: true },
+            { name: "Restore default.svg", category: "Actions" },
+            { name: "Run script.svg", category: "Actions" },
+            { name: "Save.svg", category: "Actions" },
+            { name: "Saved filter.svg", category: "Actions" },
+            { name: "Trash.svg", category: "Actions", duplicate: true },
+            { name: "Trash dark.svg", category: "Actions", duplicate: true },
+            { name: "Trash outlined.svg", category: "Actions", duplicate: true },
+            { name: "Update.svg", category: "Actions" },
+            { name: "Upload.svg", category: "Actions" },
+
+            // Навигация
+            { name: "Arrow ascending.svg", category: "Navigation" },
+            { name: "Arrow descending.svg", category: "Navigation" },
+            { name: "Arrow down.svg", category: "Navigation" },
+            { name: "Arrow left.svg", category: "Navigation" },
+            { name: "Arrow right.svg", category: "Navigation" },
+            { name: "Chevron left.svg", category: "Navigation" },
+            { name: "Chevron right.svg", category: "Navigation" },
+            { name: "Collapse.svg", category: "Navigation" },
+            { name: "Curved arrow.svg", category: "Navigation" },
+            { name: "Double chevron left.svg", category: "Navigation" },
+            { name: "Double chevron right.svg", category: "Navigation" },
+            { name: "Expand.svg", category: "Navigation" },
+            { name: "Forward.svg", category: "Navigation" },
+            { name: "Move down.svg", category: "Navigation" },
+            { name: "Move to bottom.svg", category: "Navigation" },
+            { name: "Move to top.svg", category: "Navigation" },
+            { name: "Move up.svg", category: "Navigation" },
+            { name: "Two-sided arrows green.svg", category: "Navigation" },
+
+            // Статусы
+            { name: "Check mark.svg", category: "Status", duplicate: true },
+            { name: "Check mark_default.svg", category: "Status", duplicate: true },
+            { name: "Check mark_disabled.svg", category: "Status" },
+            { name: "Disabled.svg", category: "Status" },
+            { name: "Error.svg", category: "Status" },
+            { name: "Help.svg", category: "Status" },
+            { name: "In progress.svg", category: "Status" },
+            { name: "Info.svg", category: "Status" },
+            { name: "Offline.svg", category: "Status" },
+            { name: "Online.svg", category: "Status" },
+            { name: "Priority critical.svg", category: "Status" },
+            { name: "Priority important.svg", category: "Status" },
+            { name: "Priority low.svg", category: "Status" },
+            { name: "Priority normal.svg", category: "Status" },
+            { name: "Question.svg", category: "Status", duplicate: true },
+            { name: "Question dark.svg", category: "Status", duplicate: true },
+            { name: "Question subtle.svg", category: "Status", duplicate: true },
+            { name: "Severity alert.svg", category: "Status" },
+            { name: "Severity debug.svg", category: "Status" },
+            { name: "Severity emergency.svg", category: "Status" },
+            { name: "Severity notice.svg", category: "Status" },
+            { name: "Success.svg", category: "Status" },
+            { name: "Warning.svg", category: "Status", duplicate: true },
+            { name: "Warning-1.svg", category: "Status", duplicate: true },
+
+            // Файлы
+            { name: "Attachement.svg", category: "Files", duplicate: true },
+            { name: "Attachement light.svg", category: "Files", duplicate: true },
+            { name: "Certificate.svg", category: "Files" },
+            { name: "File CSV.svg", category: "Files" },
+            { name: "File HTML.svg", category: "Files" },
+            { name: "File PCAP.svg", category: "Files" },
+            { name: "File PDF.svg", category: "Files" },
+            { name: "File XML.svg", category: "Files" },
+            { name: "File ZIP.svg", category: "Files" },
+            { name: "New page.svg", category: "Files" },
+
+            // Редактор
+            { name: "Align center.svg", category: "Editor" },
+            { name: "Align left.svg", category: "Editor" },
+            { name: "Align right.svg", category: "Editor" },
+            { name: "Bold.svg", category: "Editor" },
+            { name: "Bullet list.svg", category: "Editor" },
+            { name: "Decrease font.svg", category: "Editor" },
+            { name: "Fill color.svg", category: "Editor" },
+            { name: "Increase font.svg", category: "Editor" },
+            { name: "Italic.svg", category: "Editor" },
+            { name: "Numbered list.svg", category: "Editor" },
+            { name: "Source code.svg", category: "Editor" },
+            { name: "Text color.svg", category: "Editor" },
+            { name: "Underline.svg", category: "Editor" },
+
+            // Безопасность
+            { name: "Block.svg", category: "Security" },
+            { name: "Decrypt.svg", category: "Security" },
+            { name: "Decrypt forward.svg", category: "Security" },
+            { name: "DoS protection.svg", category: "Security" },
+            { name: "Key.svg", category: "Security" },
+            { name: "Padlock grey.svg", category: "Security", duplicate: true },
+            { name: "Padlock orange.svg", category: "Security", duplicate: true },
+            { name: "Padlock subtle.svg", category: "Security", duplicate: true },
+            { name: "Padlocks.svg", category: "Security" },
+            { name: "Police.svg", category: "Security" },
+            { name: "Shield green.svg", category: "Security" },
+            { name: "Virus cloud.svg", category: "Security" },
+            { name: "Kaspersky Anti-Virus.svg", category: "Security" },
+
+            // Бренды
+            { name: "BSD.svg", category: "Brands" },
+            { name: "Cisco.svg", category: "Brands" },
+            { name: "Oracle.svg", category: "Brands" },
+            { name: "React.svg", category: "Brands" },
+            { name: "OS Android.svg", category: "Brands" },
+            { name: "OS IOS.svg", category: "Brands" },
+            { name: "OS Linux.svg", category: "Brands" },
+            { name: "OS MAC.svg", category: "Brands" },
+            { name: "OS Windows.svg", category: "Brands" },
+            { name: "OS Windows mobile.svg", category: "Brands" },
+
+            // Сеть
+            { name: "Destination NAT.svg", category: "Network" },
+            { name: "Geo IP.svg", category: "Network" },
+            { name: "Globe.svg", category: "Network", duplicate: true },
+            { name: "Globe dark.svg", category: "Network", duplicate: true },
+            { name: "Inactive firewall.svg", category: "Network" },
+            { name: "Interface.svg", category: "Network" },
+            { name: "Interface bond-off.svg", category: "Network" },
+            { name: "Interface bond-on.svg", category: "Network" },
+            { name: "Interface deleted.svg", category: "Network" },
+            { name: "Interface error.svg", category: "Network" },
+            { name: "Interface hydra-error.svg", category: "Network" },
+            { name: "Interface hydra-off.svg", category: "Network" },
+            { name: "Interface hydra-on.svg", category: "Network" },
+            { name: "Interface off.svg", category: "Network" },
+            { name: "Interface vian.svg", category: "Network" },
+            { name: "Link.svg", category: "Network" },
+            { name: "Nat netmap.svg", category: "Network" },
+            { name: "NoDNAT.svg", category: "Network" },
+            { name: "NoNAT.svg", category: "Network" },
+            { name: "Redirect green.svg", category: "Network", duplicate: true },
+            { name: "Redirect yellow.svg", category: "Network", duplicate: true },
+            { name: "Server.svg", category: "Network" },
+            { name: "Source NAT.svg", category: "Network" },
+            { name: "Webhook.svg", category: "Network" },
+            { name: "dnsbl.svg", category: "Network" },
+
+            // Данные
+            { name: "Analytics rule condition.svg", category: "Data" },
+            { name: "Bar chart.svg", category: "Data" },
+            { name: "Line chart.svg", category: "Data" },
+            { name: "Pie chart.svg", category: "Data" },
+            { name: "Table.svg", category: "Data" },
+            { name: "Table view.svg", category: "Data" },
+            { name: "Text view.svg", category: "Data" },
+
+            // UI общее
+            { name: "Actions.svg", category: "UI" },
+            { name: "Bell empty.svg", category: "UI", duplicate: true },
+            { name: "Bell filled.svg", category: "UI", duplicate: true },
+            { name: "Bell new.svg", category: "UI" },
+            { name: "Close.svg", category: "UI", duplicate: true },
+            { name: "Close small.svg", category: "UI", duplicate: true },
+            { name: "Comment.svg", category: "UI" },
+            { name: "Computer with user.svg", category: "UI" },
+            { name: "Day.svg", category: "UI" },
+            { name: "Disable.svg", category: "UI" },
+            { name: "Ellipsis.svg", category: "UI" },
+            { name: "Eye.svg", category: "UI", duplicate: true },
+            { name: "Eye-1.svg", category: "UI", duplicate: true },
+            { name: "Eye hide.svg", category: "UI", duplicate: true },
+            { name: "New_Eye.svg", category: "UI", duplicate: true },
+            { name: "New_Hide_Eye.svg", category: "UI", duplicate: true },
+            { name: "Filter.svg", category: "UI", duplicate: true },
+            { name: "Filter applied.svg", category: "UI", duplicate: true },
+            { name: "Filter outline.svg", category: "UI", duplicate: true },
+            { name: "Flag dbg.svg", category: "UI" },
+            { name: "Flag en.svg", category: "UI" },
+            { name: "Flag ru.svg", category: "UI" },
+            { name: "Fork.svg", category: "UI" },
+            { name: "Gear subtle.svg", category: "UI" },
+            { name: "Grid menu.svg", category: "UI" },
+            { name: "Hierarchy.svg", category: "UI" },
+            { name: "History.svg", category: "UI" },
+            { name: "Light bulb.svg", category: "UI" },
+            { name: "Loader.svg", category: "UI" },
+            { name: "Log.svg", category: "UI" },
+            { name: "Log session start.svg", category: "UI" },
+            { name: "Log success.svg", category: "UI" },
+            { name: "Logging disabled.svg", category: "UI" },
+            { name: "Logging enabled.svg", category: "UI" },
+            { name: "Logout subtle.svg", category: "UI" },
+            { name: "Magnifier.svg", category: "UI" },
+            { name: "Mixed.svg", category: "UI" },
+            { name: "More.svg", category: "UI" },
+            { name: "Night.svg", category: "UI" },
+            { name: "One column.svg", category: "UI" },
+            { name: "Two columns.svg", category: "UI" },
+            { name: "Three columns.svg", category: "UI" },
+            { name: "Override.svg", category: "UI" },
+            { name: "Pause.svg", category: "UI" },
+            { name: "Pin.svg", category: "UI" },
+            { name: "Placeholder.svg", category: "UI" },
+            { name: "Settings.svg", category: "UI" },
+            { name: "Shape.svg", category: "UI" },
+            { name: "Star.svg", category: "UI" },
+            { name: "Start.svg", category: "UI" },
+            { name: "Stepper.svg", category: "UI" },
+            { name: "Undefined.svg", category: "UI" },
+            { name: "User.svg", category: "UI", duplicate: true },
+            { name: "User subtle.svg", category: "UI", duplicate: true },
+            { name: "Userid ignore.svg", category: "UI" },
+            { name: "Userid login.svg", category: "UI" },
+            { name: "Userid logout.svg", category: "UI" },
+            { name: "Video subtle.svg", category: "UI" },
+            { name: "Whistle.svg", category: "UI" },
+            { name: "Workflow.svg", category: "UI" },
+        ];
+
+        const categoryColors = {
+            'Actions': 'var(--group-actions)',
+            'Navigation': 'var(--group-navigation)',
+            'Status': 'var(--group-status)',
+            'Files': 'var(--group-files)',
+            'Editor': 'var(--group-editor)',
+            'Security': 'var(--group-security)',
+            'Brands': 'var(--group-brands)',
+            'Network': 'var(--group-network)',
+            'Data': 'var(--group-data)',
+            'UI': 'var(--group-ui)'
+        };
+
+        const grouped = icons.reduce((acc, icon) => {
+            if (!acc[icon.category]) acc[icon.category] = [];
+            acc[icon.category].push(icon);
+            return acc;
+        }, {});
+
+        const gallery = document.getElementById('gallery');
+
+        const categoryOrder = ['Actions', 'Navigation', 'Status', 'Files', 'Editor', 'Security', 'Brands', 'Network', 'Data', 'UI'];
+
+        categoryOrder.forEach(cat => {
+            if (!grouped[cat]) return;
+
+            const section = document.createElement('div');
+            section.className = 'category-section';
+
+            const header = document.createElement('div');
+            header.className = 'category-header';
+            header.innerHTML = `
+                <span class="category-badge" style="background: ${categoryColors[cat]}">${categoryNames[cat]}</span>
+                <span class="category-count">${grouped[cat].length} иконок</span>
+            `;
+            section.appendChild(header);
+
+            const grid = document.createElement('div');
+            grid.className = 'icons-grid';
+
+            grouped[cat].forEach(icon => {
+                const card = document.createElement('div');
+                card.className = 'icon-card' + (icon.duplicate ? ' duplicate-warning' : '');
+                card.innerHTML = `
+                    <div class="icon-preview">
+                        <img src="${ICON_PATH}${icon.name}" alt="${icon.name}" onerror="this.parentElement.innerHTML='❌'">
+                    </div>
+                    <div class="icon-name">${icon.name.replace('.svg', '')}</div>
+                `;
+                grid.appendChild(card);
+            });
+
+            section.appendChild(grid);
+            gallery.appendChild(section);
+        });
+    </script>
+</body>
+
+</html>

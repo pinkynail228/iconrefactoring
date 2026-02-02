@@ -1,0 +1,40 @@
+# 📊 Inventory Summary
+
+**Total Icons:** 207
+
+## Naming Patterns Detected
+- **Sentence Case with Spaces (Dominant):** `Align center.svg`, `Add to filter.svg` (approx 60%)
+- **Kebab-case (Suffixes):** [Edit-1.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Edit-1.svg), [Eye-1.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Eye-1.svg)
+- **Underscore/Snake_case:** `Check mark_default.svg`, [New_Eye.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/New_Eye.svg)
+- **PascalCase:** [NoDNAT.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/NoDNAT.svg)
+- **Prefixes/Suffixes:** `interface *`, `priority *`, `severity *`, `* subtle`
+
+## Key Issues & Anomalies
+1.  **Typos:**
+    -   [Attachement.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Attachement.svg) / `Attachement light.svg` (Should be "Attachment").
+
+2.  **Visual vs Semantic Conflicts:**
+    -   Multiple "Eye" variants: [Eye.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Eye.svg), [Eye-1.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Eye-1.svg), [New_Eye.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/New_Eye.svg), [New_Hide_Eye.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/New_Hide_Eye.svg), `Eye hide.svg`. (Need to consolidate to `eye`, `eye-off`).
+    -   "Edit" variants: [Edit.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Edit.svg), [Edit-1.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Edit-1.svg).
+    -   "Refresh" variants: [Refresh.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Refresh.svg), [Refresh-1.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Refresh-1.svg).
+    -   "Trash" vs "Delete": Need to distinguish if one is a bin and the other is a generic remove (X). [Delete.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Delete.svg) usually implies action, `Trash` implies object.
+
+3.  **Inconsistent Categorization:**
+    -   Large number of domain-specific network icons (`Destination NAT`, `DoS protection`, `Interface hydra-error`) mixed with generic UI icons (`Add`, `Close`).
+    -   Brand icons (`Cisco`, `Oracle`, `Kaspersky`) mixed in root.
+
+4.  **Color/Visual Naming:**
+    -   `Padlock grey`, `Padlock orange`, `Shield green`. (Should ideally be semantic like `lock-disabled`, `lock-alert`, `shield-secure`).
+
+5.  **Duplicates:**
+    -   `Arrow right` vs `Chevron right` (Likely distinct, but need different names if they look similar).
+    -   [Clear.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Clear.svg) vs [Close.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Close.svg) (Often duplicates).
+
+## Next Steps
+Proceeding to generate CSV Map with the following Semantic Rules:
+-   **Case:** `kebab-case` only.
+-   **Structure:** `[category]-[object]-[modifier/action]`.
+-   **Actionable Renames:**
+    -   Fix typos (`attachement` -> `attachment`).
+    -   Standardize `subtle` to a consistent suffix if needed, or map to `outline`/`secondary` if appropriate.
+    -   Group network icons under `network-` or specific entity prefixes.

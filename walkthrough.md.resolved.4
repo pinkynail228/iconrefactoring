@@ -1,0 +1,80 @@
+# 📦 Аудит библиотеки иконок — Итоги
+
+## Цель
+Создать удобную библиотеку UI иконок с семантическим именованием и без дубликатов.
+
+---
+
+## 🎥 Демо сравнения AS-IS → TO-BE
+
+![Видео-запись просмотра страницы сравнения](/Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/full_comparison_demo_1770003742620.webp)
+
+---
+
+## 📊 Результат
+
+| Метрика | До | После |
+| :--- | :--- | :--- |
+| **Всего иконок** | 207 | ~170 |
+| **Дубликатов удалено** | — | ~37 |
+| **Стиль именования** | Разнобой | `kebab-case` |
+| **Категорий** | — | 10 |
+
+---
+
+## 📁 Файлы
+
+| Файл | Описание |
+| :--- | :--- |
+| [icon_comparison.html](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/icon_comparison.html) | Интерактивное сравнение AS-IS → TO-BE |
+| [icon_gallery.html](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/icon_gallery.html) | Галерея всех иконок по категориям |
+| [icon_audit.csv](file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/icon_audit.csv) | CSV-таблица для Figma с тегами |
+
+---
+
+## ✅ Применённые решения
+
+### Объединённые дубликаты (MERGED)
+- `Edit` + `Edit-1` → `edit`
+- `Reset` + `Reset-1` → `reset`
+- `Trash` + `Trash dark` + `Trash outlined` → `trash`
+- `Question` + `Question dark` + `Question subtle` → `question`
+- `Attachement` + `Attachement light` → `attachment` (+ исправлена опечатка)
+- `Padlock grey` + `Padlock subtle` → `indicator-locked` (перенесён в Status)
+- `Globe` + `Globe dark` → `globe`
+- `Bell empty` + `Bell filled` → `bell`
+- `Close` + `Close small` → `close`
+- `Eye` + `Eye-1` + `New_Eye` → `eye`
+- `Eye hide` + `New_Hide_Eye` → `eye-off`
+- `Filter` + `Filter outline` → `filter`
+- `User` + `User subtle` → `user`
+- `Settings` + `Gear subtle` → `settings`
+
+### Семантические переименования
+- `Warning-1` → `indicator-warning` (точка-статус для таблиц)
+- `Padlock orange` → `lock-warning` (остался в Security)
+- [Actions.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/Actions.svg) → `menu-overflow` (кебаб-меню)
+- `Magnifier` → `search`
+- `Start` → `play`
+
+### На обсуждение с командой (DISCUSS)
+- `Refresh` / `Refresh-1` — разные иконки?
+- `Check mark` / `Check mark_default` — где используются?
+- `Redirect green` / `Redirect yellow` — пока оставляем
+
+---
+
+## 🔗 Открыть в браузере
+
+```
+file:///Users/pnklrd/.gemini/antigravity/brain/5475502a-4078-4f1f-b821-011627c1e9fe/icon_comparison.html
+```
+
+---
+
+## ❓ Следующий шаг
+
+После утверждения:
+1. **Физическое переименование** файлов в папке
+2. **Экспорт** в Figma с тегами из CSV
+3. **Удаление** дубликатов из репозитория

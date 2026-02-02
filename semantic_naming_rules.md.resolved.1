@@ -1,0 +1,40 @@
+# 🏢 Enterprise Semantic Naming Rules
+
+## Philosophy
+Follows industry-standard conventions (Uber Base Web, Material Design, Carbon) prioritizing **clarity**, **professionalism**, and **explicitness** over brevity.
+
+**Core Rule**: No abstract slang. Use standard English descriptors.
+-   ❌ [x.svg](file:///Users/pnklrd/Downloads/UI%20icons%20library/OS%20Linux.svg) (Too abstract, "dev slang")
+-   ✅ `close.svg` (Clear semantic meaning)
+
+## Taxonomy & Standards
+
+### 1. Common Actions
+-   **Close/Cancel**: `close` (Standard for modals/dialogs).
+-   **Add/New**: `plus` (Visual shape) or `add` (Functional). *Decision: `plus` for the symbol.*
+-   **Delete/Remove**: `delete` (Standard action). If specific visual is needed: `trash-can`.
+-   **Edit**: `pencil` (Visual) or `edit` (Functional). *Decision: `edit`.*
+-   **Search**: `search`. (Never `magnifier`).
+-   **Menu**: `menu` (Hamburger).
+-   **Overflow**: `overflow` or `overflow-vertical` (Instead of "kebab").
+
+### 2. Navigation
+-   **Arrows**: `arrow-left`, `arrow-right` (Stemmed arrows).
+-   **Chevrons**: `chevron-left`, `chevron-right` (Stemless).
+-   **Carets**: `caret-down` (Filled triangle).
+
+### 3. Modifiers (Suffixes)
+-   **Variants**: `-filled`, `-outlined` (or `-outline`), `-round`.
+-   **Sizes**: `-small`, `-medium`, `-large` (Avoid `-sm`, `-md`).
+-   **State**: `-disabled`, `-active`, `-error` (not `-orange`).
+
+## Mapping Table (Key Changes)
+
+| Original Concept | Old Proposed | **New Enterprise Standard** |
+| :--- | :--- | :--- |
+| X / Cross | `x` | **`close`** |
+| Plus sign | `add` | **`plus`** |
+| Trash Bin | `trash` | **`delete`** |
+| 3 dots | `kebab-menu` | **`overflow`** |
+| Magnifying glass | `magnifier` | **`search`** |
+| Gear | `settings` | **`settings`** |
