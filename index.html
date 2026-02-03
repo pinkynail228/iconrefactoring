@@ -425,6 +425,48 @@
             z-index: 10;
         }
 
+        .icon-card {
+            cursor: pointer;
+        }
+
+        /* TOAST NOTIFICATION */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #111827;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 500;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 2000;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            color: #10B981;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .comparison-layout {
@@ -500,6 +542,17 @@
     <footer>
         Generic Icon System • Сгенерировано Antigravity
     </footer>
+
+    <!-- TOAST -->
+    <div id="toast" class="toast">
+        <div class="toast-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+        <span id="toastMessage">Copied</span>
+    </div>
 
     <script>
         function toggleAccordion(id) {
@@ -641,6 +694,11 @@
                 card.className = 'icon-card';
                 card.dataset.link = icon.name; // Linked Hover
 
+                // COPY LOGIC (AS IS)
+                const match = data.tobe.find(t => t.name === icon.name);
+                const copyText = match ? match.newName : icon.name.replace('.svg', '');
+                card.dataset.copy = copyText;
+
                 card.innerHTML = `
                     ${icon.status === 'duplicate' ? '<div class="status-dot duplicate" title="Дубликат"></div>' : ''}
                     ${icon.status === 'discuss' ? '<div class="status-dot discuss" title="Обсудить"></div>' : ''}
@@ -664,6 +722,7 @@
                 const card = document.createElement('div');
                 card.className = 'icon-card tobe-card';
                 card.dataset.link = icon.name; // Linked Hover
+                card.dataset.copy = icon.newName; // Copy new name
 
                 card.innerHTML = `
                     ${icon.merged ? '<div class="status-dot merged" title="Объединен"></div>' : ''}
@@ -704,6 +763,33 @@
                 });
             }
         });
+
+        // Click to Copy Logic
+        document.addEventListener('click', (e) => {
+            const card = e.target.closest('.icon-card');
+            if (!card) return;
+
+            const textToCopy = card.dataset.copy;
+            if (textToCopy) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showToast(textToCopy);
+                });
+            }
+        });
+
+        function showToast(text) {
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            document.getElementById('toastMessage').textContent = `Скопировано: ${text}`;
+            toast.classList.add('visible');
+
+            // Clear previous timeout if any
+            if (window.toastTimeout) clearTimeout(window.toastTimeout);
+
+            window.toastTimeout = setTimeout(() => {
+                toast.classList.remove('visible');
+            }, 2000);
+        }
 
         // Sticky Nav Active State
         window.addEventListener('scroll', () => {
