@@ -874,11 +874,14 @@
                 const copyText = match ? match.newName : icon.name.replace('.svg', '');
                 card.dataset.copy = copyText;
 
+                // Resolve path: use new name in category subfolder
+                const iconSrc = match ? `${ICON_PATH}${data.id}/${match.newName}.svg` : '';
+
                 card.innerHTML = `
                     ${icon.status === 'duplicate' ? '<div class="status-dot duplicate" title="Дубликат"></div>' : ''}
                     ${icon.status === 'discuss' ? '<div class="status-dot discuss" title="Обсудить"></div>' : ''}
                     <div class="icon-preview">
-                         <img src="${ICON_PATH}${icon.name}" onerror="this.style.display='none';this.parentElement.innerHTML='?'">
+                         ${iconSrc ? `<img src="${iconSrc}" onerror="this.style.display='none';this.parentElement.innerHTML='?'">` : '?'}
                     </div>
                     <div class="icon-name">${icon.name.replace('.svg', '')}</div>
                 `;
@@ -903,7 +906,7 @@
                     ${icon.merged ? '<div class="status-dot merged" title="Объединен"></div>' : ''}
                     ${icon.discuss ? '<div class="status-dot discuss" title="Обсудить"></div>' : ''}
                     <div class="icon-preview">
-                         <img src="${ICON_PATH}${icon.name}" onerror="this.style.display='none';this.parentElement.innerHTML='?'">
+                         <img src="${ICON_PATH}${data.id}/${icon.newName}.svg" onerror="this.style.display='none';this.parentElement.innerHTML='?'">
                     </div>
                     <div class="icon-name">${icon.newName}</div>
                 `;
