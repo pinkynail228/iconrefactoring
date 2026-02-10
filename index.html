@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon System Audit 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --bg-body: #F5F5F7;
+            --bg-card: #FFFFFF;
+            --bg-glass: rgba(255, 255, 255, 0.8);
+            --text-primary: #111827;
+            --text-secondary: #6B7280;
+            --text-tertiary: #9CA3AF;
+
+            --accent-primary: #0F172A;
+            /* Slate 900 */
+            --accent-blue: #3B82F6;
+            --accent-green: #10B981;
+            --accent-red: #EF4444;
+            --accent-amber: #F59E0B;
+
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 100px;
+        }
+
+        /* --- STICKY NAV --- */
+        .sticky-nav {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 8px 12px;
+            border-radius: 99px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            gap: 4px;
+            max-width: 90%;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .sticky-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-item {
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item:hover {
+            color: var(--text-primary);
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-item.active {
+            background: var(--text-primary);
+            color: white;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            text-align: center;
+            padding: 120px 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #111827 0%, #4B5563 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        /* --- COLLAPSIBLE INFO --- */
+        .info-accordion {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .accordion-header {
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .accordion-header:hover {
+            background: #F9FAFB;
+        }
+
+        .accordion-title {
+            font-weight: 600;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .accordion-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .accordion-arrow {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+            opacity: 0.4;
+        }
+
+        .info-accordion.open .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 0 24px 32px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .info-accordion.open .accordion-content {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Guide Grid (New System Key) */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding-top: 8px;
+        }
+
+        .guide-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .rules-list,
+        .status-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .rule-item,
+        .status-item {
+            background: #F9FAFB;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .rule-item {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .status-item {
+            flex-direction: row;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .status-item h4,
+        .rule-item h4 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: var(--text-primary);
+        }
+
+        .status-item p,
+        .rule-item p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+
+        .code-pill {
+            display: inline-block;
+            background: #EEF2FF;
+            color: var(--accent-blue);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            align-self: flex-start;
+        }
+
+        .status-dot.lock-icon {
+            background: none;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .status-dot-container {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+        }
+
+
+
+        .status-dot-container .status-dot {
+            top: 6px;
+            right: 6px;
+        }
+
+        /* STATS RECAP */
+        .stats-recap {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--accent-primary);
+            line-height: 1;
+        }
+
+        .stat-value.warning {
+            color: var(--accent-amber);
+        }
+
+        .stat-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: var(--text-tertiary);
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- MAIN GRID --- */
+        .audit-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            gap: 60px;
+        }
+
+        /* CATEGORY SECTION */
+        .category-section {
+            scroll-margin-top: 100px;
+            /* Offset for sticky nav */
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .section-badge {
+            background: var(--text-primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* COMPARISON CARD */
+        .comparison-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Dashed divider line */
+        .comparison-layout::after {
+            content: '';
+            position: absolute;
+            top: 24px;
+            bottom: 24px;
+            left: 50%;
+            width: 1px;
+            border-left: 2px dashed rgba(0, 0, 0, 0.06);
+            transform: translateX(-0.5px);
+        }
+
+        .col-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 8px;
+        }
+
+        .col-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-tertiary);
+        }
+
+        .col-label.tobe {
+            color: var(--accent-green);
+        }
+
+        .icons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 12px;
+        }
+
+        /* ICON CARD */
+        .icon-card {
+            background: #FAFAFA;
+            border-radius: var(--radius-md);
+            padding: 16px 12px;
+            text-align: center;
+            position: relative;
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid transparent;
+        }
+
+        .icon-card:hover {
+            background: white;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            z-index: 2;
+        }
+
+        .icon-card.tobe-card {
+            background: #F0FDF4;
+        }
+
+        .icon-card.tobe-card:hover {
+            background: #DCFCE7;
+        }
+
+        .icon-preview {
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .icon-preview img {
+            max-width: 24px;
+            max-height: 24px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .icon-card:hover .icon-preview img {
+            opacity: 1;
+        }
+
+        .icon-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--text-secondary);
+            word-break: break-all;
+            line-height: 1.3;
+        }
+
+        .tobe-card .icon-name {
+            color: #15803D;
+            /* Green 700 */
+            font-weight: 500;
+        }
+
+        /* STATUS DOTS */
+        .status-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .status-dot.duplicate {
+            background: var(--accent-red);
+            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+        }
+
+        .status-dot.discuss {
+            background: var(--accent-amber);
+            box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+        }
+
+        .status-dot.merged {
+            background: var(--accent-green);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            margin-top: 100px;
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        /* HIGHLIGHT SYNC */
+        .icon-card.highlighted {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+            transform: scale(1.05);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+            z-index: 10;
+        }
+
+        .icon-card {
+            cursor: pointer;
+        }
+
+        /* TOAST NOTIFICATION */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #111827;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 500;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 2000;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            color: #10B981;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .comparison-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .comparison-layout::after {
+                display: none;
+            }
+
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- STICKY NAV -->
+    <nav class="sticky-nav" id="stickyNav">
+        <!-- JS will populate this -->
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <h1>Аудит Системы<br>Иконок '26</h1>
+        <p>Сравнение исходных ассетов и новой семантической системы. 9 категорий, плоская структура.</p>
+
+
+
+        <!-- COLLAPSIBLE LEGEND -->
+        <div class="info-accordion" id="rulesAccordion">
+            <div class="accordion-header" onclick="toggleAccordion('rulesAccordion')">
+                <div class="accordion-title">
+                    <div class="accordion-icon">i</div>
+                    <span>Легенда Системы</span>
+                </div>
+                <svg class="accordion-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="accordion-content">
+                <div class="guide-grid">
+                    <!-- NAMING RULES -->
+                    <div class="guide-column">
+                        <h3 class="guide-title">Правила Именования</h3>
+                        <div class="rules-list">
+                            <div class="rule-item">
+                                <h4>1. Kebab-case</h4>
+                                <p>Строчные буквы, через дефис.</p>
+                                <div class="code-pill">arrow-right</div>
+                            </div>
+                            <div class="rule-item">
+                                <h4>2. Объект-Действие</h4>
+                                <p>Сначала сущность, потом действие.</p>
+                                <div class="code-pill">filter-add</div>
+                            </div>
+                            <div class="rule-item">
+                                <h4>3. Плоское именование</h4>
+                                <p>Без префиксов категорий.</p>
+                                <div class="code-pill">cisco</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STATUS LEGEND -->
+                    <div class="guide-column">
+                        <h3 class="guide-title">Индикаторы (Точки)</h3>
+                        <div class="status-list">
+                            <div class="status-item">
+                                <div class="status-dot-container">
+                                    <div class="status-dot merged"></div>
+                                </div>
+                                <div>
+                                    <h4>Merged / New</h4>
+                                    <p>Иконка обновлена или объединена (в <em>To Be</em>).</p>
+                                </div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-dot-container">
+                                    <div class="status-dot duplicate"></div>
+                                </div>
+                                <div>
+                                    <h4>Duplicate</h4>
+                                    <p>Дубликат или устаревшая (в <em>As Is</em>).</p>
+                                </div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-dot-container">
+                                    <div class="status-dot discuss"></div>
+                                </div>
+                                <div>
+                                    <h4>Discuss</h4>
+                                    <p>Требует внимания или обсуждения.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- STATS RECAP -->
+                <div class="stats-recap">
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalAsis">0</span>
+                        <span class="stat-label">Исходников (As Is)</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalTobe">0</span>
+                        <span class="stat-label">Обновленных (To Be)</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value warning" id="totalDiscuss">0</span>
+                        <span class="stat-label">На Обсуждение</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="audit-container" id="gallery">
+        <!-- JS will render categories here -->
+    </main>
+
+    <footer>
+        Generic Icon System • Сгенерировано Antigravity
+    </footer>
+
+    <!-- TOAST -->
+    <div id="toast" class="toast">
+        <div class="toast-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+        <span id="toastMessage">Copied</span>
+    </div>
+
+    <script>
+        function toggleAccordion(id) {
+            document.getElementById(id).classList.toggle('open');
+        }
+
+        const ICON_PATH = './assets/';
+
+        // --- FULL DATASET ---
+        const categories = {
+            'Actions': {
+                id: 'actions',
+                asis: [
+                    { name: "Add.svg", status: "keep" }, { name: "Add to filter.svg", status: "keep" }, { name: "Add to incident.svg", status: "keep" }, { name: "Clear.svg", status: "keep" }, { name: "Copy.svg", status: "keep" }, { name: "Create incident.svg", status: "keep" }, { name: "Delete.svg", status: "keep" }, { name: "Edit.svg", status: "duplicate" }, { name: "Edit-1.svg", status: "duplicate" }, { name: "Export.svg", status: "keep" }, { name: "Export CSV.svg", status: "keep" }, { name: "Import.svg", status: "keep" }, { name: "Print.svg", status: "keep" }, { name: "Refresh.svg", status: "discuss" }, { name: "Refresh-1.svg", status: "discuss" }, { name: "Remove from incident.svg", status: "keep" }, { name: "Reset.svg", status: "duplicate" }, { name: "Reset-1.svg", status: "duplicate" }, { name: "Restore default.svg", status: "keep" }, { name: "Run script.svg", status: "keep" }, { name: "Save.svg", status: "keep" }, { name: "Saved filter.svg", status: "keep" }, { name: "Trash.svg", status: "duplicate" }, { name: "Trash dark.svg", status: "duplicate" }, { name: "Trash outlined.svg", status: "duplicate" }, { name: "Update.svg", status: "keep" }, { name: "Upload.svg", status: "keep" },
+                    { name: "Filter.svg", status: "duplicate" }, { name: "Filter applied.svg", status: "keep" }, { name: "Magnifier.svg", status: "keep" }
+                ],
+                tobe: [
+                    { name: "Add.svg", newName: "add" }, { name: "Clear.svg", newName: "clear" }, { name: "Copy.svg", newName: "copy" }, { name: "Delete.svg", newName: "delete" }, { name: "Edit.svg", newName: "edit", merged: true }, { name: "Export.svg", newName: "export" }, { name: "Export CSV.svg", newName: "export-csv" }, { name: "Filter.svg", newName: "filter", merged: true }, { name: "Filter applied.svg", newName: "filter-active" }, { name: "Add to filter.svg", newName: "filter-add" }, { name: "Saved filter.svg", newName: "filter-saved" }, { name: "Import.svg", newName: "import" }, { name: "Add to incident.svg", newName: "incident-add" }, { name: "Create incident.svg", newName: "incident-create" }, { name: "Remove from incident.svg", newName: "incident-remove" }, { name: "Print.svg", newName: "print" }, { name: "Refresh.svg", newName: "refresh", discuss: true }, { name: "Refresh-1.svg", newName: "refresh-alt", discuss: true }, { name: "Reset.svg", newName: "reset", merged: true }, { name: "Restore default.svg", newName: "restore" }, { name: "Save.svg", newName: "save" }, { name: "Run script.svg", newName: "script-run" }, { name: "Magnifier.svg", newName: "search" }, { name: "Trash.svg", newName: "trash", merged: true }, { name: "Update.svg", newName: "update" }, { name: "Upload.svg", newName: "upload" }
+                ]
+            },
+            'Navigation': {
+                id: 'navigation',
+                asis: [
+                    { name: "Arrow ascending.svg", status: "keep" }, { name: "Arrow descending.svg", status: "keep" }, { name: "Arrow down.svg", status: "keep" }, { name: "Arrow left.svg", status: "keep" }, { name: "Arrow right.svg", status: "keep" }, { name: "Chevron left.svg", status: "keep" }, { name: "Chevron right.svg", status: "keep" }, { name: "Collapse.svg", status: "keep" }, { name: "Curved arrow.svg", status: "keep" }, { name: "Double chevron left.svg", status: "keep" }, { name: "Double chevron right.svg", status: "keep" }, { name: "Expand.svg", status: "keep" }, { name: "Forward.svg", status: "keep" }, { name: "Move down.svg", status: "keep" }, { name: "Move to bottom.svg", status: "keep" }, { name: "Move to top.svg", status: "keep" }, { name: "Move up.svg", status: "keep" }, { name: "Two-sided arrows green.svg", status: "keep" }, { name: "Redirect green.svg", status: "discuss" }, { name: "Redirect yellow.svg", status: "discuss" },
+                    { name: "Stepper.svg", status: "keep" }
+                ],
+                tobe: [
+                    { name: "Arrow down.svg", newName: "arrow-down" }, { name: "Arrow descending.svg", newName: "arrow-down-sort" }, { name: "Arrow left.svg", newName: "arrow-left" }, { name: "Arrow right.svg", newName: "arrow-right" }, { name: "Two-sided arrows green.svg", newName: "arrow-swap" }, { name: "Curved arrow.svg", newName: "arrow-undo" }, { name: "Arrow ascending.svg", newName: "arrow-up-sort" }, { name: "Chevron left.svg", newName: "chevron-left" }, { name: "Double chevron left.svg", newName: "chevron-left-double" }, { name: "Chevron right.svg", newName: "chevron-right" }, { name: "Double chevron right.svg", newName: "chevron-right-double" }, { name: "Collapse.svg", newName: "collapse" }, { name: "Expand.svg", newName: "expand" }, { name: "Forward.svg", newName: "forward" }, { name: "Move down.svg", newName: "move-down" }, { name: "Move to bottom.svg", newName: "move-end" }, { name: "Move to top.svg", newName: "move-start" }, { name: "Move up.svg", newName: "move-up" }, { name: "Redirect green.svg", newName: "redirect", discuss: true }, { name: "Redirect yellow.svg", newName: "redirect-warning", discuss: true }, { name: "Stepper.svg", newName: "stepper" }
+                ]
+            },
+            'Status': {
+                id: 'status',
+                asis: [
+                    { name: "Check mark.svg", status: "discuss" }, { name: "Check mark_default.svg", status: "discuss" }, { name: "Check mark_disabled.svg", status: "keep" }, { name: "Disabled.svg", status: "keep" }, { name: "Error.svg", status: "keep" }, { name: "Help.svg", status: "keep" }, { name: "In progress.svg", status: "keep" }, { name: "Info.svg", status: "keep" }, { name: "Offline.svg", status: "keep" }, { name: "Online.svg", status: "keep" }, { name: "Priority critical.svg", status: "keep" }, { name: "Priority important.svg", status: "keep" }, { name: "Priority low.svg", status: "keep" }, { name: "Priority normal.svg", status: "keep" }, { name: "Question.svg", status: "duplicate" }, { name: "Question dark.svg", status: "duplicate" }, { name: "Question subtle.svg", status: "duplicate" }, { name: "Severity alert.svg", status: "keep" }, { name: "Severity debug.svg", status: "keep" }, { name: "Severity emergency.svg", status: "keep" }, { name: "Severity notice.svg", status: "keep" }, { name: "Success.svg", status: "keep" }, { name: "Warning.svg", status: "keep" }, { name: "Warning-1.svg", status: "keep" }, { name: "Padlock grey.svg", status: "duplicate" }
+                ],
+                tobe: [
+                    { name: "Check mark.svg", newName: "check", discuss: true }, { name: "Error.svg", newName: "error" }, { name: "Help.svg", newName: "help" }, { name: "Disabled.svg", newName: "indicator-disabled" }, { name: "Offline.svg", newName: "indicator-offline" }, { name: "Online.svg", newName: "indicator-online" }, { name: "In progress.svg", newName: "indicator-progress" }, { name: "Warning-1.svg", newName: "indicator-warning" }, { name: "Info.svg", newName: "info" }, { name: "Priority critical.svg", newName: "priority-critical" }, { name: "Priority important.svg", newName: "priority-high" }, { name: "Priority low.svg", newName: "priority-low" }, { name: "Priority normal.svg", newName: "priority-normal" }, { name: "Question.svg", newName: "question", merged: true }, { name: "Severity alert.svg", newName: "severity-alert" }, { name: "Severity debug.svg", newName: "severity-debug" }, { name: "Severity emergency.svg", newName: "severity-emergency" }, { name: "Severity notice.svg", newName: "severity-notice" }, { name: "Success.svg", newName: "success" }, { name: "Check mark_default.svg", newName: "success-alt", discuss: true }, { name: "Check mark_disabled.svg", newName: "success-disabled" }, { name: "Warning.svg", newName: "warning" }
+                ]
+            },
+            'Files': {
+                id: 'files',
+                asis: [
+                    { name: "Attachement.svg", status: "duplicate" }, { name: "Attachement light.svg", status: "duplicate" }, { name: "Certificate.svg", status: "keep" }, { name: "File CSV.svg", status: "keep" }, { name: "File HTML.svg", status: "keep" }, { name: "File PCAP.svg", status: "keep" }, { name: "File PDF.svg", status: "keep" }, { name: "File XML.svg", status: "keep" }, { name: "File ZIP.svg", status: "keep" }, { name: "New page.svg", status: "keep" }
+                ],
+                tobe: [
+                    { name: "Attachement.svg", newName: "attachment", merged: true }, { name: "Certificate.svg", newName: "certificate" }, { name: "File CSV.svg", newName: "file-csv" }, { name: "File HTML.svg", newName: "file-html" }, { name: "File PCAP.svg", newName: "file-pcap" }, { name: "File PDF.svg", newName: "file-pdf" }, { name: "File XML.svg", newName: "file-xml" }, { name: "File ZIP.svg", newName: "file-zip" }, { name: "New page.svg", newName: "page-new" }
+                ]
+            },
+            'Editor': {
+                id: 'editor',
+                asis: [
+                    { name: "Align center.svg", status: "keep" }, { name: "Align left.svg", status: "keep" }, { name: "Align right.svg", status: "keep" }, { name: "Bold.svg", status: "keep" }, { name: "Bullet list.svg", status: "keep" }, { name: "Decrease font.svg", status: "keep" }, { name: "Fill color.svg", status: "keep" }, { name: "Increase font.svg", status: "keep" }, { name: "Italic.svg", status: "keep" }, { name: "Numbered list.svg", status: "keep" }, { name: "Source code.svg", status: "keep" }, { name: "Text color.svg", status: "keep" }, { name: "Underline.svg", status: "keep" },
+                    { name: "Analytics rule condition.svg", status: "keep" }, { name: "Bar chart.svg", status: "keep" }, { name: "Line chart.svg", status: "keep" }, { name: "Pie chart.svg", status: "keep" }, { name: "Table.svg", status: "keep" }, { name: "Table view.svg", status: "keep" }, { name: "Text view.svg", status: "keep" },
+                    { name: "One column.svg", status: "keep" }, { name: "Two columns.svg", status: "keep" }, { name: "Three columns.svg", status: "keep" }
+                ],
+                tobe: [
+                    { name: "Align center.svg", newName: "align-center" }, { name: "Align left.svg", newName: "align-left" }, { name: "Align right.svg", newName: "align-right" }, { name: "Analytics rule condition.svg", newName: "analytics-rule" }, { name: "Bold.svg", newName: "bold" }, { name: "Bar chart.svg", newName: "chart-bar" }, { name: "Line chart.svg", newName: "chart-line" }, { name: "Pie chart.svg", newName: "chart-pie" }, { name: "Source code.svg", newName: "code" }, { name: "Fill color.svg", newName: "color-fill" }, { name: "Text color.svg", newName: "color-text" }, { name: "Decrease font.svg", newName: "font-decrease" }, { name: "Increase font.svg", newName: "font-increase" }, { name: "Italic.svg", newName: "italic" }, { name: "One column.svg", newName: "layout-1-column" }, { name: "Two columns.svg", newName: "layout-2-columns" }, { name: "Three columns.svg", newName: "layout-3-columns" }, { name: "Bullet list.svg", newName: "list-bullet" }, { name: "Numbered list.svg", newName: "list-numbered" }, { name: "Table.svg", newName: "table" }, { name: "Underline.svg", newName: "underline" }, { name: "Table view.svg", newName: "view-table" }, { name: "Text view.svg", newName: "view-text" }
+                ]
+            },
+            'Security': {
+                id: 'security',
+                asis: [
+                    { name: "Block.svg", status: "keep" }, { name: "Decrypt.svg", status: "keep" }, { name: "Decrypt forward.svg", status: "keep" }, { name: "DoS protection.svg", status: "keep" }, { name: "Key.svg", status: "keep" }, { name: "Padlock grey.svg", status: "duplicate" }, { name: "Padlock subtle.svg", status: "duplicate" }, { name: "Padlock orange.svg", status: "keep" }, { name: "Padlocks.svg", status: "keep" }, { name: "Police.svg", status: "keep" }, { name: "Shield green.svg", status: "keep" }, { name: "Virus cloud.svg", status: "keep" }, { name: "Kaspersky Anti-Virus.svg", status: "keep" }
+                ],
+                tobe: [
+                    { name: "Kaspersky Anti-Virus.svg", newName: "antivirus" }, { name: "Block.svg", newName: "block" }, { name: "Key.svg", newName: "key" }, { name: "Padlock orange.svg", newName: "lock-alert" }, { name: "Padlock grey.svg", newName: "lock-closed", merged: true }, { name: "Padlocks.svg", newName: "lock-multiple" }, { name: "Decrypt.svg", newName: "lock-open" }, { name: "Decrypt forward.svg", newName: "lock-open-forward" }, { name: "Police.svg", newName: "police" }, { name: "Shield green.svg", newName: "shield-check" }, { name: "DoS protection.svg", newName: "shield-dos" }, { name: "Virus cloud.svg", newName: "virus" }
+                ]
+            },
+            'Brands': {
+                id: 'brands',
+                asis: [
+                    { name: "BSD.svg", status: "keep" }, { name: "Cisco.svg", status: "keep" }, { name: "Oracle.svg", status: "keep" }, { name: "React.svg", status: "keep" }, { name: "OS Android.svg", status: "keep" }, { name: "OS IOS.svg", status: "keep" }, { name: "OS Linux.svg", status: "keep" }, { name: "OS MAC.svg", status: "keep" }, { name: "OS Windows.svg", status: "keep" }, { name: "OS Windows mobile.svg", status: "keep" }
+                ],
+                tobe: [
+                    { name: "OS Android.svg", newName: "android" }, { name: "BSD.svg", newName: "bsd" }, { name: "Cisco.svg", newName: "cisco" }, { name: "OS IOS.svg", newName: "ios" }, { name: "OS Linux.svg", newName: "linux" }, { name: "OS MAC.svg", newName: "macos" }, { name: "Oracle.svg", newName: "oracle" }, { name: "React.svg", newName: "react" }, { name: "OS Windows.svg", newName: "windows" }, { name: "OS Windows mobile.svg", newName: "windows-mobile" }
+                ]
+            },
+            'Network': {
+                id: 'network',
+                asis: [
+                    { name: "Destination NAT.svg", status: "keep" }, { name: "Geo IP.svg", status: "keep" }, { name: "Globe.svg", status: "duplicate" }, { name: "Globe dark.svg", status: "duplicate" }, { name: "Inactive firewall.svg", status: "keep" }, { name: "Interface.svg", status: "keep" }, { name: "Interface bond-off.svg", status: "keep" }, { name: "Interface bond-on.svg", status: "keep" }, { name: "Interface deleted.svg", status: "keep" }, { name: "Interface error.svg", status: "keep" }, { name: "Interface hydra-error.svg", status: "keep" }, { name: "Interface hydra-off.svg", status: "keep" }, { name: "Interface hydra-on.svg", status: "keep" }, { name: "Interface off.svg", status: "keep" }, { name: "Interface vian.svg", status: "keep" }, { name: "Link.svg", status: "keep" }, { name: "Nat netmap.svg", status: "keep" }, { name: "NoDNAT.svg", status: "keep" }, { name: "NoNAT.svg", status: "keep" }, { name: "Server.svg", status: "keep" }, { name: "Source NAT.svg", status: "keep" }, { name: "Webhook.svg", status: "keep" }, { name: "dnsbl.svg", status: "keep" }
+                ],
+                tobe: [
+                    { name: "dnsbl.svg", newName: "dnsbl" }, { name: "Inactive firewall.svg", newName: "firewall-inactive" }, { name: "Geo IP.svg", newName: "geo-ip" }, { name: "Globe.svg", newName: "globe", merged: true }, { name: "Interface.svg", newName: "interface" }, { name: "Interface bond-off.svg", newName: "interface-bond-off" }, { name: "Interface bond-on.svg", newName: "interface-bond-on" }, { name: "Interface deleted.svg", newName: "interface-deleted" }, { name: "Interface error.svg", newName: "interface-error" }, { name: "Interface hydra-error.svg", newName: "interface-hydra-error" }, { name: "Interface hydra-off.svg", newName: "interface-hydra-off" }, { name: "Interface hydra-on.svg", newName: "interface-hydra-on" }, { name: "Interface off.svg", newName: "interface-off" }, { name: "Interface vian.svg", newName: "interface-vlan" }, { name: "Link.svg", newName: "link" }, { name: "Destination NAT.svg", newName: "nat-destination" }, { name: "Nat netmap.svg", newName: "nat-netmap" }, { name: "Source NAT.svg", newName: "nat-source" }, { name: "NoDNAT.svg", newName: "nodnat" }, { name: "NoNAT.svg", newName: "nonat" }, { name: "Server.svg", newName: "server" }, { name: "Webhook.svg", newName: "webhook" }
+                ]
+            },
+            'UI': {
+                id: 'ui',
+                asis: [
+                    { name: "Actions.svg", status: "keep" }, { name: "Bell empty.svg", status: "duplicate" }, { name: "Bell filled.svg", status: "duplicate" }, { name: "Bell new.svg", status: "keep" }, { name: "Close.svg", status: "duplicate" }, { name: "Close small.svg", status: "duplicate" }, { name: "Comment.svg", status: "keep" }, { name: "Computer with user.svg", status: "keep" }, { name: "Day.svg", status: "keep" }, { name: "Disable.svg", status: "keep" }, { name: "Ellipsis.svg", status: "keep" }, { name: "Eye.svg", status: "duplicate" }, { name: "Eye-1.svg", status: "duplicate" }, { name: "Eye hide.svg", status: "keep" }, { name: "New_Eye.svg", status: "duplicate" }, { name: "New_Hide_Eye.svg", status: "duplicate" }, { name: "Filter outline.svg", status: "duplicate" }, { name: "Flag dbg.svg", status: "keep" }, { name: "Flag en.svg", status: "keep" }, { name: "Flag ru.svg", status: "keep" }, { name: "Fork.svg", status: "keep" }, { name: "Gear subtle.svg", status: "duplicate" }, { name: "Grid menu.svg", status: "keep" }, { name: "Hierarchy.svg", status: "keep" }, { name: "History.svg", status: "keep" }, { name: "Light bulb.svg", status: "keep" }, { name: "Loader.svg", status: "keep" }, { name: "Log.svg", status: "keep" }, { name: "Log session start.svg", status: "keep" }, { name: "Log success.svg", status: "keep" }, { name: "Logging disabled.svg", status: "keep" }, { name: "Logging enabled.svg", status: "keep" }, { name: "Logout subtle.svg", status: "keep" }, { name: "Mixed.svg", status: "keep" }, { name: "More.svg", status: "keep" }, { name: "Night.svg", status: "keep" }, { name: "Override.svg", status: "keep" }, { name: "Pause.svg", status: "keep" }, { name: "Pin.svg", status: "keep" }, { name: "Placeholder.svg", status: "keep" }, { name: "Settings.svg", status: "duplicate" }, { name: "Shape.svg", status: "keep" }, { name: "Star.svg", status: "keep" }, { name: "Start.svg", status: "keep" }, { name: "Undefined.svg", status: "keep" }, { name: "User.svg", status: "duplicate" }, { name: "User subtle.svg", status: "duplicate" }, { name: "Userid ignore.svg", status: "keep" }, { name: "Userid login.svg", status: "keep" }, { name: "Userid logout.svg", status: "keep" }, { name: "Video subtle.svg", status: "keep" }, { name: "Whistle.svg", status: "keep" }, { name: "Workflow.svg", status: "keep" }
+                ],
+                tobe: [
+                    { name: "Bell empty.svg", newName: "bell", merged: true }, { name: "Bell new.svg", newName: "bell-active" }, { name: "Close.svg", newName: "close", merged: true }, { name: "Comment.svg", newName: "comment" }, { name: "Computer with user.svg", newName: "computer-user" }, { name: "Disable.svg", newName: "disable" }, { name: "Ellipsis.svg", newName: "ellipsis" }, { name: "Eye.svg", newName: "eye", merged: true }, { name: "Eye hide.svg", newName: "eye-off", merged: true }, { name: "Filter outline.svg", newName: "filter-outline", merged: true }, { name: "Flag dbg.svg", newName: "flag-debug" }, { name: "Flag en.svg", newName: "flag-en" }, { name: "Flag ru.svg", newName: "flag-ru" }, { name: "Fork.svg", newName: "fork" }, { name: "Hierarchy.svg", newName: "hierarchy" }, { name: "History.svg", newName: "history" }, { name: "Light bulb.svg", newName: "lightbulb" }, { name: "Loader.svg", newName: "loader" }, { name: "Log.svg", newName: "log" }, { name: "Log session start.svg", newName: "log-session-start" }, { name: "Log success.svg", newName: "log-success" }, { name: "Logging disabled.svg", newName: "logging-disabled" }, { name: "Logging enabled.svg", newName: "logging-enabled" }, { name: "Logout subtle.svg", newName: "logout" }, { name: "Grid menu.svg", newName: "menu-grid" }, { name: "Actions.svg", newName: "menu-overflow" }, { name: "Mixed.svg", newName: "mixed" }, { name: "More.svg", newName: "more-horizontal" }, { name: "Override.svg", newName: "override" }, { name: "Pause.svg", newName: "pause" }, { name: "Pin.svg", newName: "pin" }, { name: "Placeholder.svg", newName: "placeholder" }, { name: "Start.svg", newName: "play" }, { name: "Settings.svg", newName: "settings", merged: true }, { name: "Shape.svg", newName: "shape" }, { name: "Star.svg", newName: "star" }, { name: "Day.svg", newName: "theme-day" }, { name: "Night.svg", newName: "theme-night" }, { name: "Undefined.svg", newName: "undefined" }, { name: "User.svg", newName: "user", merged: true }, { name: "Userid ignore.svg", newName: "user-ignore" }, { name: "Userid login.svg", newName: "user-login" }, { name: "Userid logout.svg", newName: "user-logout" }, { name: "Video subtle.svg", newName: "video" }, { name: "Whistle.svg", newName: "whistle" }, { name: "Workflow.svg", newName: "workflow" }
+                ]
+            }
+        };
+
+        // --- CALCULATE STATS ---
+        const totalAsis = Object.values(categories).reduce((sum, cat) => sum + cat.asis.length, 0);
+        const totalTobe = Object.values(categories).reduce((sum, cat) => sum + cat.tobe.length, 0);
+        const totalDiscuss = Object.values(categories).reduce((sum, cat) => {
+            return sum + cat.tobe.filter(i => i.discuss).length;
+        }, 0);
+
+        // Update Stats DOM
+        const elAsis = document.getElementById('totalAsis');
+        const elTobe = document.getElementById('totalTobe');
+        const elDiscuss = document.getElementById('totalDiscuss');
+
+        if (elAsis) elAsis.textContent = totalAsis;
+        if (elTobe) elTobe.textContent = totalTobe;
+        if (elDiscuss) elDiscuss.textContent = totalDiscuss;
+
+        const nav = document.getElementById('stickyNav');
+        const gallery = document.getElementById('gallery');
+
+
+
+        Object.entries(categories).forEach(([name, data]) => {
+            // 1. Add Nav Item
+            const navLink = document.createElement('a');
+            navLink.href = `#${data.id}`;
+            navLink.className = 'nav-item';
+            navLink.textContent = name;
+            nav.appendChild(navLink);
+
+            // 2. Build Section
+            const section = document.createElement('section');
+            section.id = data.id;
+            section.className = 'category-section';
+
+            const header = document.createElement('div');
+            header.className = 'section-header';
+            header.innerHTML = `
+                <div class="section-title">${name}</div>
+                <div class="section-badge">${data.tobe.length}</div>
+            `;
+            section.appendChild(header);
+
+            const compLayout = document.createElement('div');
+            compLayout.className = 'comparison-layout';
+
+            // AS-IS Column
+            const leftCol = document.createElement('div');
+            leftCol.innerHTML = '<div class="col-header"><span class="col-label">AS IS</span></div>';
+            const leftGrid = document.createElement('div');
+            leftGrid.className = 'icons-grid';
+
+            data.asis.forEach(icon => {
+                const card = document.createElement('div');
+                card.className = 'icon-card';
+                card.dataset.link = icon.name; // Linked Hover
+
+                // COPY LOGIC (AS IS)
+                const match = data.tobe.find(t => t.name === icon.name);
+                const copyText = match ? match.newName : icon.name.replace('.svg', '');
+                card.dataset.copy = copyText;
+
+                card.innerHTML = `
+                    ${icon.status === 'duplicate' ? '<div class="status-dot duplicate" title="Дубликат"></div>' : ''}
+                    ${icon.status === 'discuss' ? '<div class="status-dot discuss" title="Обсудить"></div>' : ''}
+                    <div class="icon-preview">
+                         <img src="${ICON_PATH}${icon.name}" onerror="this.style.display='none';this.parentElement.innerHTML='?'">
+                    </div>
+                    <div class="icon-name">${icon.name.replace('.svg', '')}</div>
+                `;
+                leftGrid.appendChild(card);
+            });
+            leftCol.appendChild(leftGrid);
+            compLayout.appendChild(leftCol);
+
+            // TO-BE Column
+            const rightCol = document.createElement('div');
+            rightCol.innerHTML = '<div class="col-header"><span class="col-label tobe">TO BE</span></div>';
+            const rightGrid = document.createElement('div');
+            rightGrid.className = 'icons-grid';
+
+            data.tobe.forEach(icon => {
+                const card = document.createElement('div');
+                card.className = 'icon-card tobe-card';
+                card.dataset.link = icon.name; // Linked Hover
+                card.dataset.copy = icon.newName; // Copy new name
+
+                card.innerHTML = `
+                    ${icon.merged ? '<div class="status-dot merged" title="Объединен"></div>' : ''}
+                    ${icon.discuss ? '<div class="status-dot discuss" title="Обсудить"></div>' : ''}
+                    <div class="icon-preview">
+                         <img src="${ICON_PATH}${icon.name}" onerror="this.style.display='none';this.parentElement.innerHTML='?'">
+                    </div>
+                    <div class="icon-name">${icon.newName}</div>
+                `;
+                rightGrid.appendChild(card);
+            });
+            rightCol.appendChild(rightGrid);
+            compLayout.appendChild(rightCol);
+
+            section.appendChild(compLayout);
+            gallery.appendChild(section);
+        });
+
+        // Hover Sync Logic
+        document.addEventListener('mouseover', (e) => {
+            const card = e.target.closest('.icon-card');
+            if (!card) return;
+            const linkName = card.dataset.link;
+            if (linkName) {
+                document.querySelectorAll(`.icon-card[data-link="${CSS.escape(linkName)}"]`).forEach(el => {
+                    el.classList.add('highlighted');
+                });
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            const card = e.target.closest('.icon-card');
+            if (!card) return;
+            const linkName = card.dataset.link;
+            if (linkName) {
+                document.querySelectorAll(`.icon-card[data-link="${CSS.escape(linkName)}"]`).forEach(el => {
+                    el.classList.remove('highlighted');
+                });
+            }
+        });
+
+        // Click to Copy Logic
+        document.addEventListener('click', (e) => {
+            const card = e.target.closest('.icon-card');
+            if (!card) return;
+
+            const textToCopy = card.dataset.copy;
+            if (textToCopy) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showToast(textToCopy);
+                });
+            }
+        });
+
+        function showToast(text) {
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            document.getElementById('toastMessage').textContent = `Скопировано: ${text}`;
+            toast.classList.add('visible');
+
+            // Clear previous timeout if any
+            if (window.toastTimeout) clearTimeout(window.toastTimeout);
+
+            window.toastTimeout = setTimeout(() => {
+                toast.classList.remove('visible');
+            }, 2000);
+        }
+
+        // Sticky Nav Active State
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.nav-item').forEach(li => {
+                li.classList.remove('active');
+                if (current && li.getAttribute('href').includes(current)) {
+                    li.classList.add('active');
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

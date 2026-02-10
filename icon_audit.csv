@@ -1,0 +1,209 @@
+Original Name;New Name;Category;Figma Tags;Status;Notes
+Add.svg;add.svg;Actions;add, plus, create, new;OK;
+Add to filter.svg;filter-add.svg;Actions;filter, add, include;OK;
+Add to incident.svg;incident-add.svg;Actions;incident, add, create;OK;
+Clear.svg;clear.svg;Actions;clear, reset, empty;OK;
+Copy.svg;copy.svg;Actions;copy, duplicate, clone;OK;
+Create incident.svg;incident-create.svg;Actions;incident, create, new;OK;
+Delete.svg;delete.svg;Actions;delete, remove, destroy;OK;
+Edit.svg;edit.svg;Actions;edit, pencil, modify;MERGED;Edit-1.svg объединён
+Edit-1.svg;УДАЛИТЬ;Actions;;DUPLICATE;→ edit.svg
+Export.svg;export.svg;Actions;export, download, out;OK;
+Export CSV.svg;export-csv.svg;Actions;export, csv, download;OK;
+Import.svg;import.svg;Actions;import, upload, in;OK;
+Print.svg;print.svg;Actions;print, printer;OK;
+Refresh.svg;refresh.svg;Actions;refresh, reload, sync;DISCUSS;Обсудить с командой
+Refresh-1.svg;refresh-alt.svg;Actions;refresh, reload, alternative;DISCUSS;Обсудить с командой
+Remove from incident.svg;incident-remove.svg;Actions;incident, remove, delete;OK;
+Reset.svg;reset.svg;Actions;reset, revert, undo;MERGED;Reset-1.svg объединён
+Reset-1.svg;УДАЛИТЬ;Actions;;DUPLICATE;→ reset.svg
+Restore default.svg;restore-default.svg;Actions;restore, default, reset;OK;
+Run script.svg;script-run.svg;Actions;script, run, execute;OK;
+Save.svg;save.svg;Actions;save, disk, store;OK;
+Saved filter.svg;filter-saved.svg;Actions;filter, saved, bookmark;OK;
+Trash.svg;trash.svg;Actions;trash, delete, bin;MERGED;Trash dark, Trash outlined объединены
+Trash dark.svg;УДАЛИТЬ;Actions;;DUPLICATE;→ trash.svg
+Trash outlined.svg;УДАЛИТЬ;Actions;;DUPLICATE;→ trash.svg
+Update.svg;update.svg;Actions;update, refresh, sync;OK;
+Upload.svg;upload.svg;Actions;upload, send, up;OK;
+Arrow ascending.svg;arrow-ascending.svg;Navigation;arrow, ascending, up, sort;OK;
+Arrow descending.svg;arrow-descending.svg;Navigation;arrow, descending, down, sort;OK;
+Arrow down.svg;arrow-down.svg;Navigation;arrow, down, direction;OK;
+Arrow left.svg;arrow-left.svg;Navigation;arrow, left, back;OK;
+Arrow right.svg;arrow-right.svg;Navigation;arrow, right, forward;OK;
+Chevron left.svg;chevron-left.svg;Navigation;chevron, left, back;OK;
+Chevron right.svg;chevron-right.svg;Navigation;chevron, right, forward;OK;
+Collapse.svg;collapse.svg;Navigation;collapse, minimize, fold;OK;
+Curved arrow.svg;arrow-curved.svg;Navigation;arrow, curved, undo;OK;
+Double chevron left.svg;chevron-double-left.svg;Navigation;chevron, double, left, first;OK;
+Double chevron right.svg;chevron-double-right.svg;Navigation;chevron, double, right, last;OK;
+Expand.svg;expand.svg;Navigation;expand, maximize, unfold;OK;
+Forward.svg;forward.svg;Navigation;forward, next, ahead;OK;
+Move down.svg;move-down.svg;Navigation;move, down, reorder;OK;
+Move to bottom.svg;move-to-bottom.svg;Navigation;move, bottom, last;OK;
+Move to top.svg;move-to-top.svg;Navigation;move, top, first;OK;
+Move up.svg;move-up.svg;Navigation;move, up, reorder;OK;
+Two-sided arrows green.svg;arrow-swap.svg;Navigation;arrow, swap, exchange, bidirectional;OK;
+Check mark.svg;check.svg;Status;check, done, success;DISCUSS;Обсудить с командой
+Check mark_default.svg;success-alt.svg;Status;check, default, alternative;DISCUSS;Обсудить с командой
+Check mark_disabled.svg;success-disabled.svg;Status;check, disabled, inactive;OK;
+Disabled.svg;indicator-disabled.svg;Status;indicator, disabled, off;OK;
+Error.svg;error.svg;Status;error, fail, problem;OK;
+Help.svg;help.svg;Status;help, question, support;OK;
+In progress.svg;indicator-progress.svg;Status;indicator, progress, loading;OK;
+Info.svg;info.svg;Status;info, information, details;OK;
+Offline.svg;indicator-offline.svg;Status;indicator, offline, disconnected;OK;
+Online.svg;indicator-online.svg;Status;indicator, online, connected;OK;
+Priority critical.svg;priority-critical.svg;Status;priority, critical, urgent;OK;
+Priority important.svg;priority-important.svg;Status;priority, important, high;OK;
+Priority low.svg;priority-low.svg;Status;priority, low, minor;OK;
+Priority normal.svg;priority-normal.svg;Status;priority, normal, medium;OK;
+Question.svg;question.svg;Status;question, help, ask;MERGED;Question dark, Question subtle объединены
+Question dark.svg;УДАЛИТЬ;Status;;DUPLICATE;→ question.svg
+Question subtle.svg;УДАЛИТЬ;Status;;DUPLICATE;→ question.svg
+Severity alert.svg;severity-alert.svg;Status;severity, alert, warning;OK;
+Severity debug.svg;severity-debug.svg;Status;severity, debug, dev;OK;
+Severity emergency.svg;severity-emergency.svg;Status;severity, emergency, critical;OK;
+Severity notice.svg;severity-notice.svg;Status;severity, notice, info;OK;
+Success.svg;success.svg;Status;success, done, complete;OK;
+Warning.svg;warning.svg;Status;warning, caution, alert;OK;
+Warning-1.svg;indicator-warning.svg;Status;indicator, warning, dot;OK;Точка-индикатор для таблиц
+Padlock grey.svg;УДАЛИТЬ;Status;;DUPLICATE;→ lock-closed.svg (Security)
+Attachement.svg;attachment.svg;Files;attachment, file, attach;MERGED;Attachement light объединён + typo fixed
+Attachement light.svg;УДАЛИТЬ;Files;;DUPLICATE;→ attachment.svg
+Certificate.svg;certificate.svg;Files;certificate, security, ssl;OK;
+File CSV.svg;file-csv.svg;Files;file, csv, data;OK;
+File HTML.svg;file-html.svg;Files;file, html, web;OK;
+File PCAP.svg;file-pcap.svg;Files;file, pcap, network;OK;
+File PDF.svg;file-pdf.svg;Files;file, pdf, document;OK;
+File XML.svg;file-xml.svg;Files;file, xml, data;OK;
+File ZIP.svg;file-zip.svg;Files;file, zip, archive;OK;
+New page.svg;page-new.svg;Files;page, new, document;OK;
+Align center.svg;align-center.svg;Editor;align, center, text;OK;
+Align left.svg;align-left.svg;Editor;align, left, text;OK;
+Align right.svg;align-right.svg;Editor;align, right, text;OK;
+Bold.svg;bold.svg;Editor;bold, text, format;OK;
+Bullet list.svg;list-bullet.svg;Editor;list, bullet, unordered;OK;
+Decrease font.svg;font-decrease.svg;Editor;font, decrease, smaller;OK;
+Fill color.svg;color-fill.svg;Editor;color, fill, background;OK;
+Increase font.svg;font-increase.svg;Editor;font, increase, bigger;OK;
+Italic.svg;italic.svg;Editor;italic, text, slant;OK;
+Numbered list.svg;list-numbered.svg;Editor;list, numbered, ordered;OK;
+Source code.svg;code.svg;Editor;code, source, html;OK;
+Text color.svg;color-text.svg;Editor;color, text, font;OK;
+Underline.svg;underline.svg;Editor;underline, text, format;OK;
+Block.svg;block.svg;Security;block, deny, stop;OK;
+Decrypt.svg;decrypt.svg;Security;decrypt, unlock, ssl;OK;
+Decrypt forward.svg;decrypt-forward.svg;Security;decrypt, forward, ssl;OK;
+DoS protection.svg;dos-protection.svg;Security;dos, protection, security;OK;
+Key.svg;key.svg;Security;key, password, auth;OK;
+Padlock grey.svg;lock-closed.svg;Security;lock, closed, secure;OK;
+Padlock subtle.svg;УДАЛИТЬ;Security;;DUPLICATE;→ lock-closed.svg
+Padlock orange.svg;lock-warning.svg;Security;lock, warning, alert;OK;
+Padlocks.svg;lock-multiple.svg;Security;lock, multiple, keys;OK;
+Police.svg;police.svg;Security;police, security, law;OK;
+Shield green.svg;shield-check.svg;Security;shield, check, secure;OK;
+Virus cloud.svg;virus-cloud.svg;Security;virus, cloud, threat;OK;
+Kaspersky Anti-Virus.svg;antivirus.svg;Security;kaspersky, antivirus, brand;OK;
+BSD.svg;brand-bsd.svg;Brands;brand, bsd, os;OK;
+Cisco.svg;brand-cisco.svg;Brands;brand, cisco, network;OK;
+Oracle.svg;brand-oracle.svg;Brands;brand, oracle, database;OK;
+React.svg;brand-react.svg;Brands;brand, react, javascript;OK;
+OS Android.svg;os-android.svg;Brands;os, android, mobile;OK;
+OS IOS.svg;os-ios.svg;Brands;os, ios, apple;OK;
+OS Linux.svg;os-linux.svg;Brands;os, linux, tux;OK;
+OS MAC.svg;os-mac.svg;Brands;os, mac, apple;OK;
+OS Windows.svg;os-windows.svg;Brands;os, windows, microsoft;OK;
+OS Windows mobile.svg;os-windows-mobile.svg;Brands;os, windows, mobile;OK;
+Destination NAT.svg;nat-destination.svg;Network;nat, destination, dnat;OK;
+Geo IP.svg;geo-ip.svg;Network;geo, ip, location;OK;
+Globe.svg;globe.svg;Network;globe, world, internet;MERGED;Globe dark объединён
+Globe dark.svg;УДАЛИТЬ;Network;;DUPLICATE;→ globe.svg
+Inactive firewall.svg;firewall-inactive.svg;Network;firewall, inactive, off;OK;
+Interface.svg;interface.svg;Network;interface, network, port;OK;
+Interface bond-off.svg;interface-bond-off.svg;Network;interface, bond, off;OK;
+Interface bond-on.svg;interface-bond-on.svg;Network;interface, bond, on;OK;
+Interface deleted.svg;interface-deleted.svg;Network;interface, deleted, removed;OK;
+Interface error.svg;interface-error.svg;Network;interface, error, problem;OK;
+Interface hydra-error.svg;interface-hydra-error.svg;Network;interface, hydra, error;OK;
+Interface hydra-off.svg;interface-hydra-off.svg;Network;interface, hydra, off;OK;
+Interface hydra-on.svg;interface-hydra-on.svg;Network;interface, hydra, on;OK;
+Interface off.svg;interface-off.svg;Network;interface, off, disabled;OK;
+Interface vian.svg;interface-vlan.svg;Network;interface, vlan, network;OK;
+Link.svg;link.svg;Network;link, url, chain;OK;
+Nat netmap.svg;nat-netmap.svg;Network;nat, netmap, mapping;OK;
+NoDNAT.svg;nodnat.svg;Network;nat, no, dnat;OK;
+NoNAT.svg;nonat.svg;Network;nat, no, disabled;OK;
+Redirect green.svg;redirect.svg;Network;redirect, forward, route;DISCUSS;Обсудить с командой
+Redirect yellow.svg;redirect-warning.svg;Network;redirect, warning, caution;DISCUSS;Обсудить с командой
+Server.svg;server.svg;Network;server, host, machine;OK;
+Source NAT.svg;nat-source.svg;Network;nat, source, snat;OK;
+Webhook.svg;webhook.svg;Network;webhook, api, callback;OK;
+dnsbl.svg;dnsbl.svg;Network;dnsbl, dns, blacklist;OK;
+Analytics rule condition.svg;analytics-rule.svg;Editor;analytics, rule, condition;OK;
+Bar chart.svg;chart-bar.svg;Editor;chart, bar, graph;OK;
+Line chart.svg;chart-line.svg;Editor;chart, line, graph;OK;
+Pie chart.svg;chart-pie.svg;Editor;chart, pie, graph;OK;
+Table.svg;table.svg;Editor;table, grid, data;OK;
+Table view.svg;view-table.svg;Editor;view, table, layout;OK;
+Text view.svg;view-text.svg;Editor;view, text, layout;OK;
+Actions.svg;menu-overflow.svg;UI;menu, overflow, actions, kebab;OK;
+Bell empty.svg;bell.svg;UI;bell, notification, alert;MERGED;Bell filled объединён
+Bell filled.svg;УДАЛИТЬ;UI;;DUPLICATE;→ bell.svg
+Bell new.svg;bell-notification.svg;UI;bell, notification, new;OK;
+Close.svg;close.svg;UI;close, x, dismiss;MERGED;Close small объединён
+Close small.svg;УДАЛИТЬ;UI;;DUPLICATE;→ close.svg
+Comment.svg;comment.svg;UI;comment, chat, message;OK;
+Computer with user.svg;computer-user.svg;UI;computer, user, session;OK;
+Day.svg;theme-day.svg;UI;theme, day, light;OK;
+Disable.svg;disable.svg;UI;disable, off, stop;OK;
+Ellipsis.svg;ellipsis.svg;UI;ellipsis, more, dots;OK;
+Eye.svg;eye.svg;UI;eye, view, show;MERGED;Eye-1, New_Eye объединены
+Eye-1.svg;УДАЛИТЬ;UI;;DUPLICATE;→ eye.svg
+New_Eye.svg;УДАЛИТЬ;UI;;DUPLICATE;→ eye.svg
+Eye hide.svg;eye-off.svg;UI;eye, hide, invisible;MERGED;New_Hide_Eye объединён
+New_Hide_Eye.svg;УДАЛИТЬ;UI;;DUPLICATE;→ eye-off.svg
+Filter.svg;filter.svg;Actions;filter, funnel, search;MERGED;Filter outline объединён
+Filter outline.svg;УДАЛИТЬ;UI;;DUPLICATE;→ filter.svg
+Filter applied.svg;filter-active.svg;Actions;filter, applied, active;OK;
+Flag dbg.svg;flag-debug.svg;UI;flag, debug, dev;OK;
+Flag en.svg;flag-en.svg;UI;flag, english, lang;OK;
+Flag ru.svg;flag-ru.svg;UI;flag, russian, lang;OK;
+Fork.svg;fork.svg;UI;fork, branch, split;OK;
+Gear subtle.svg;УДАЛИТЬ;UI;;DUPLICATE;→ settings.svg
+Grid menu.svg;menu-grid.svg;UI;menu, grid, apps;OK;
+Hierarchy.svg;hierarchy.svg;UI;hierarchy, tree, structure;OK;
+History.svg;history.svg;UI;history, time, past;OK;
+Light bulb.svg;lightbulb.svg;UI;lightbulb, idea, tip;OK;
+Loader.svg;loader.svg;UI;loader, loading, spinner;OK;
+Log.svg;log.svg;UI;log, record, history;OK;
+Log session start.svg;log-session-start.svg;UI;log, session, start;OK;
+Log success.svg;log-success.svg;UI;log, success, done;OK;
+Logging disabled.svg;logging-disabled.svg;UI;logging, disabled, off;OK;
+Logging enabled.svg;logging-enabled.svg;UI;logging, enabled, on;OK;
+Logout subtle.svg;logout.svg;UI;logout, exit, signout;OK;
+Magnifier.svg;search.svg;Actions;search, magnifier, find;OK;
+Mixed.svg;mixed.svg;UI;mixed, partial, indeterminate;OK;
+More.svg;more-horizontal.svg;UI;more, horizontal, dots;OK;
+Night.svg;theme-night.svg;UI;theme, night, dark;OK;
+One column.svg;layout-1-column.svg;Editor;layout, column, 1;OK;
+Two columns.svg;layout-2-columns.svg;Editor;layout, columns, 2;OK;
+Three columns.svg;layout-3-columns.svg;Editor;layout, columns, 3;OK;
+Override.svg;override.svg;UI;override, replace, custom;OK;
+Pause.svg;pause.svg;UI;pause, stop, hold;OK;
+Pin.svg;pin.svg;UI;pin, bookmark, favorite;OK;
+Placeholder.svg;placeholder.svg;UI;placeholder, empty, blank;OK;
+Settings.svg;settings.svg;UI;settings, gear, config;MERGED;Gear subtle объединён
+Shape.svg;shape.svg;UI;shape, form, object;OK;
+Star.svg;star.svg;UI;star, favorite, rating;OK;
+Start.svg;play.svg;UI;play, start, begin;OK;
+Stepper.svg;stepper.svg;Navigation;stepper, steps, wizard;OK;
+Undefined.svg;undefined.svg;UI;undefined, unknown, null;OK;
+User.svg;user.svg;UI;user, person, account;MERGED;User subtle объединён
+User subtle.svg;УДАЛИТЬ;UI;;DUPLICATE;→ user.svg
+Userid ignore.svg;user-ignore.svg;UI;user, ignore, block;OK;
+Userid login.svg;user-login.svg;UI;user, login, signin;OK;
+Userid logout.svg;user-logout.svg;UI;user, logout, signout;OK;
+Video subtle.svg;video.svg;UI;video, camera, record;OK;
+Whistle.svg;whistle.svg;UI;whistle, alert, sport;OK;
+Workflow.svg;workflow.svg;UI;workflow, process, flow;OK;
