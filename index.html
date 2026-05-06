@@ -522,6 +522,63 @@
             color: var(--text-tertiary);
         }
 
+        /* --- VIEW SWITCHER --- */
+        .view-switcher {
+            display: flex;
+            gap: 2px;
+            background: rgba(0,0,0,0.04);
+            padding: 3px;
+            border-radius: 99px;
+        }
+
+        .view-btn {
+            padding: 6px 14px;
+            border-radius: 99px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .view-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .view-btn.active {
+            background: var(--text-primary);
+            color: white;
+        }
+
+        .nav-divider {
+            width: 1px;
+            background: rgba(0,0,0,0.08);
+            margin: 4px 4px;
+            align-self: stretch;
+        }
+
+        /* TO-BE placeholder */
+        .tobe-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 120px;
+            gap: 8px;
+            color: var(--text-tertiary);
+            font-size: 13px;
+        }
+
+        .tobe-placeholder .placeholder-icon {
+            font-size: 28px;
+            opacity: 0.4;
+        }
+
         /* HIGHLIGHT SYNC */
         .icon-card.highlighted {
             border-color: #3b82f6;
@@ -595,13 +652,20 @@
 
     <!-- STICKY NAV -->
     <nav class="sticky-nav" id="stickyNav">
-        <!-- JS will populate this -->
+        <!-- View switcher -->
+        <div class="view-switcher">
+            <button class="view-btn active" data-view="library" onclick="switchView('library')">UI Library</button>
+            <button class="view-btn" data-view="tree" onclick="switchView('tree')">Tree Nav</button>
+        </div>
+        <div class="nav-divider"></div>
+        <!-- Section anchors populated by JS -->
+        <div id="navLinks" style="display:flex;gap:4px;"></div>
     </nav>
 
     <!-- HERO -->
     <header class="hero">
-        <h1>Аудит Системы<br>Иконок '26</h1>
-        <p>Сравнение исходных ассетов и новой семантической системы. 9 категорий, плоская структура.</p>
+        <h1 id="heroTitle">Аудит Системы<br>Иконок '26</h1>
+        <p id="heroDesc">Сравнение исходных ассетов и новой семантической системы. 9 категорий, плоская структура.</p>
 
 
 
@@ -723,6 +787,7 @@
         }
 
         const ICON_PATH = './assets/';
+        const TREE_PATH = './assets/Tree_merged/';
 
         // --- FULL DATASET ---
         const categories = {
@@ -813,114 +878,439 @@
             }
         };
 
-        // --- CALCULATE STATS ---
-        const totalAsis = Object.values(categories).reduce((sum, cat) => sum + cat.asis.length, 0);
-        const totalTobe = Object.values(categories).reduce((sum, cat) => sum + cat.tobe.length, 0);
-        const totalDiscuss = Object.values(categories).reduce((sum, cat) => {
-            return sum + cat.tobe.filter(i => i.discuss).length;
-        }, 0);
+        
+        // === TREE DATA ===
+                        const treeCategories = [
+          { name: 'Tree', id: 'tree-main', asis: [
+            { file: 'user-transient-add.svg', name: 'Add transient user', tobe: 'user-transient-add', status: 'keep' },
+            { file: 'administrator.svg', name: 'Administrator', tobe: 'administrator', status: 'keep' },
+            { file: 'alert.svg', name: 'Alert', tobe: 'alert', status: 'keep' },
+            { file: 'analytics.svg', name: 'Analytics', tobe: 'analytics', status: 'keep' },
+            { file: 'analytics-response-action.svg', name: 'Analytics response action', tobe: 'analytics-response-action', status: 'keep' },
+            { file: 'analytics-rule.svg', name: 'Analytics rules', tobe: 'analytics-rule', status: 'keep' },
+            { file: 'analytics-search.svg', name: 'Analytics search', tobe: 'analytics-search', status: 'keep' },
+            { file: 'application.svg', name: 'Application', tobe: 'application', status: 'keep' },
+            { file: 'application-group.svg', name: 'Application group', tobe: 'application-group', status: 'keep' },
+            { file: 'application-profile.svg', name: 'Application profile', tobe: 'application-profile', status: 'keep' },
+            { file: 'auth-profile.svg', name: 'Auth profile', tobe: 'auth-profile', status: 'keep' },
+            { file: 'auth-server.svg', name: 'Auth server', tobe: 'auth-server', status: 'keep' },
+            { file: 'bfd-profile.svg', name: 'BFD profiles', tobe: 'bfd-profile', status: 'keep' },
+            { file: 'protocol-bgp.svg', name: 'BGP', tobe: 'protocol-bgp', status: 'keep' },
+            { file: 'vpn-blocked.svg', name: 'Blocked VPN', tobe: 'vpn-blocked', status: 'keep' },
+            { file: 'byod.svg', name: 'BYOD', tobe: 'byod', status: 'keep' },
+            { file: 'captive-portal.svg', name: 'Captive portal', tobe: 'captive-portal', status: 'keep' },
+            { file: 'captive-profile.svg', name: 'Captive profile', tobe: 'captive-profile', status: 'keep' },
+            { file: 'cascade-profile.svg', name: 'Cascade profile', tobe: 'cascade-profile', status: 'keep' },
+            { file: 'cascade-proxies.svg', name: 'Cascade proxies', tobe: 'cascade-proxies', status: 'keep' },
+            { file: 'cascade-rule.svg', name: 'Cascade rules', tobe: 'cascade-rule', status: 'keep' },
+            { file: 'cascade-server.svg', name: 'Cascade Servers', tobe: 'cascade-server', status: 'keep' },
+            { file: 'certificate.svg', name: 'Certificate', tobe: 'certificate', status: 'keep' },
+            { file: 'certificate-profile.svg', name: 'Client certificate profiles', tobe: 'certificate-profile', status: 'keep' },
+            { file: 'client-rule.svg', name: 'Client rule', tobe: 'client-rule', status: 'keep' },
+            { file: 'commands.svg', name: 'Commands', tobe: 'commands', status: 'keep' },
+            { file: 'connector.svg', name: 'Connector', tobe: 'connector', status: 'keep' },
+            { file: 'console.svg', name: 'Console', tobe: 'console', status: 'keep' },
+            { file: 'content-filter.svg', name: 'Content filtering', tobe: 'content-filter', status: 'keep' },
+            { file: 'content-type.svg', name: 'Content type', tobe: 'content-type', status: 'keep' },
+            { file: 'dashboard.svg', name: 'Dashboard', tobe: 'dashboard', status: 'keep' },
+            { file: 'dcfw.svg', name: 'DCFW', tobe: 'dcfw', status: 'keep' },
+            { file: 'server.svg', name: 'Device', tobe: 'server', status: 'keep' },
+            { file: 'device-group.svg', name: 'Device group', tobe: 'device-group', status: 'keep' },
+            { file: 'devices.svg', name: 'Devices', tobe: 'devices', status: 'discuss' },
+            { file: 'cloud-device.svg', name: 'Devices', tobe: 'cloud-device', status: 'discuss' },
+            { file: 'protocol-dhcp.svg', name: 'DHCP', tobe: 'protocol-dhcp', status: 'keep' },
+            { file: 'diagnostics.svg', name: 'Diagnostics', tobe: 'diagnostics', status: 'keep' },
+            { file: 'diagnostics-ospf.svg', name: 'Diagnostics OSPF', tobe: 'diagnostics-ospf', status: 'keep' },
+            { file: 'direct.svg', name: 'Direct', tobe: 'direct', status: 'keep' },
+            { file: 'distributions-profile.svg', name: 'Distributions profile', tobe: 'distributions-profile', status: 'keep' },
+            { file: 'protocol-dns.svg', name: 'DNS', tobe: 'protocol-dns', status: 'keep' },
+            { file: 'dos-profile.svg', name: 'DoS profiles', tobe: 'dos-profile', status: 'keep' },
+            { file: 'dos-rule.svg', name: 'DoS rules', tobe: 'dos-rule', status: 'keep' },
+            { file: 'email.svg', name: 'Email', tobe: 'email', status: 'keep' },
+            { file: 'endpoint.svg', name: 'Endpoint', tobe: 'endpoint', status: 'keep' },
+            { file: 'endpoint-codes.svg', name: 'Endpoint codes', tobe: 'endpoint-codes', status: 'keep' },
+            { file: 'endpoints-management.svg', name: 'Endpoints management', tobe: 'endpoints-management', status: 'keep' },
+            { file: 'exceptions.svg', name: 'Exceptions', tobe: 'exceptions', status: 'keep' },
+            { file: 'external-enrichment-service.svg', name: 'External enrichment services', tobe: 'external-enrichment-service', status: 'keep' },
+            { file: 'firewall.svg', name: 'Firewall', tobe: 'firewall', status: 'keep' },
+            { file: 'folder.svg', name: 'Folder', tobe: 'folder', status: 'keep' },
+            { file: 'gateway.svg', name: 'Gateway', tobe: 'gateway', status: 'keep' },
+            { file: 'global-portal.svg', name: 'Global portal', tobe: 'global-portal', status: 'keep' },
+            { file: 'globe-numeric.svg', name: 'Globe 123', tobe: 'globe-numeric', status: 'keep' },
+            { file: 'globe-search.svg', name: 'Globe search', tobe: 'globe-search', status: 'keep' },
+            { file: 'user-group.svg', name: 'Group', tobe: 'user-group', status: 'keep' },
+            { file: 'group-mapping.svg', name: 'Group-mapping', tobe: 'group-mapping', status: 'keep' },
+            { file: 'ha-cluster.svg', name: 'HA-cluster', tobe: 'ha-cluster', status: 'keep' },
+            { file: 'ha-cluster-alt.svg', name: 'HA-cluster-1', tobe: 'ha-cluster-alt', status: 'keep' },
+            { file: 'hip-profile.svg', name: 'HIP profiles', tobe: 'hip-profile', status: 'keep' },
+            { file: 'icap-rule.svg', name: 'ICAP rules', tobe: 'icap-rule', status: 'keep' },
+            { file: 'icap-server.svg', name: 'ICAP servers', tobe: 'icap-server', status: 'keep' },
+            { file: 'idps-block-page.svg', name: 'IDPS block IP page', tobe: 'idps-block-page', status: 'keep' },
+            { file: 'idps-profile.svg', name: 'IDPS profile', tobe: 'idps-profile', status: 'keep' },
+            { file: 'idps-rule.svg', name: 'IDPS rules', tobe: 'idps-rule', status: 'keep' },
+            { file: 'idps-signature.svg', name: 'IDPS signatures', tobe: 'idps-signature', status: 'keep' },
+            { file: 'incident.svg', name: 'Incident', tobe: 'incident', status: 'keep' },
+            { file: 'incident-log.svg', name: 'Incident log', tobe: 'incident-log', status: 'keep' },
+            { file: 'incident-schema.svg', name: 'Incident schema', tobe: 'incident-schema', status: 'keep' },
+            { file: 'info-inline.svg', name: 'Info inline', tobe: 'info-inline', status: 'keep' },
+            { file: 'interface.svg', name: 'Interface', tobe: 'interface', status: 'keep' },
+            { file: 'ip-list.svg', name: 'IP list', tobe: 'ip-list', status: 'keep' },
+            { file: 'libraries.svg', name: 'Libraries', tobe: 'libraries', status: 'keep' },
+            { file: 'libraries-update.svg', name: 'Libraries update', tobe: 'libraries-update', status: 'keep' },
+            { file: 'lldp-neighbor.svg', name: 'LLDP neighbors', tobe: 'lldp-neighbor', status: 'keep' },
+            { file: 'lldp-profile.svg', name: 'LLDP profiles', tobe: 'lldp-profile', status: 'keep' },
+            { file: 'lldp-statistic.svg', name: 'LLDP statistics', tobe: 'lldp-statistic', status: 'keep' },
+            { file: 'load-balancer.svg', name: 'Load balancing', tobe: 'load-balancer', status: 'keep' },
+            { file: 'log.svg', name: 'Log', tobe: 'log', status: 'keep' },
+            { file: 'log-browser-numeric.svg', name: 'Log browser 123', tobe: 'log-browser-numeric', status: 'keep' },
+            { file: 'log-browser-text.svg', name: 'Log browser abc', tobe: 'log-browser-text', status: 'keep' },
+            { file: 'log-browser-time.svg', name: 'Log browser clock', tobe: 'log-browser-time', status: 'keep' },
+            { file: 'log-collector.svg', name: 'Log collector', tobe: 'log-collector', status: 'keep' },
+            { file: 'log-dns.svg', name: 'Log DNS', tobe: 'log-dns', status: 'keep' },
+            { file: 'log-event.svg', name: 'Log event', tobe: 'log-event', status: 'keep' },
+            { file: 'log-export-alt.svg', name: 'Log export', tobe: 'log-export-alt', status: 'discuss' },
+            { file: 'log-export.svg', name: 'Log export', tobe: 'log-export', status: 'discuss' },
+            { file: 'log-idps.svg', name: 'Log idps', tobe: 'log-idps', status: 'keep' },
+            { file: 'log-mailsecurity.svg', name: 'Log mailsecurity', tobe: 'log-mailsecurity', status: 'keep' },
+            { file: 'log-normalization.svg', name: 'Log normalization', tobe: 'log-normalization', status: 'keep' },
+            { file: 'log-scada.svg', name: 'Log scada', tobe: 'log-scada', status: 'keep' },
+            { file: 'log-ssh-certificate.svg', name: 'Log ssh certificate', tobe: 'log-ssh-certificate', status: 'keep' },
+            { file: 'log-traffic.svg', name: 'Log traffic', tobe: 'log-traffic', status: 'keep' },
+            { file: 'log-webaccess.svg', name: 'Log webaccess', tobe: 'log-webaccess', status: 'keep' },
+            { file: 'log-websocket.svg', name: 'Log WebSocket', tobe: 'log-websocket', status: 'keep' },
+            { file: 'logan-devices.svg', name: 'LogAn devices', tobe: 'logan-devices', status: 'keep' },
+            { file: 'logan-management.svg', name: 'LogAn management', tobe: 'logan-management', status: 'keep' },
+            { file: 'mail-security.svg', name: 'Mail security', tobe: 'mail-security', status: 'keep' },
+            { file: 'mfa-profile.svg', name: 'MFA profile', tobe: 'mfa-profile', status: 'keep' },
+            { file: 'modified.svg', name: 'Modified', tobe: 'modified', status: 'keep' },
+            { file: 'monitor.svg', name: 'Monitor', tobe: 'monitor', status: 'keep' },
+            { file: 'monitor-arrow.svg', name: 'Monitor arrow', tobe: 'monitor-arrow', status: 'keep' },
+            { file: 'monitor-graph.svg', name: 'Monitor grachics', tobe: 'monitor-graph', status: 'keep' },
+            { file: 'monitor-network.svg', name: 'Monitor network arrows', tobe: 'monitor-network', status: 'keep' },
+            { file: 'morphology.svg', name: 'Morphology', tobe: 'morphology', status: 'keep' },
+            { file: 'nat-routing.svg', name: 'NAT and routing', tobe: 'nat-routing', status: 'keep' },
+            { file: 'nat-collector.svg', name: 'NAT, Collectors', tobe: 'nat-collector', status: 'keep' },
+            { file: 'network.svg', name: 'Network', tobe: 'network', status: 'keep' },
+            { file: 'network-alt.svg', name: 'Network-1', tobe: 'network-alt', status: 'keep' },
+            { file: 'notification.svg', name: 'Notification', tobe: 'notification', status: 'keep' },
+            { file: 'notification-alert-rule.svg', name: 'Notification alert rule', tobe: 'notification-alert-rule', status: 'keep' },
+            { file: 'notification-profile.svg', name: 'Notification profile', tobe: 'notification-profile', status: 'keep' },
+            { file: 'status-check-warning.svg', name: 'Orange check', tobe: 'status-check-warning', status: 'keep' },
+            { file: 'file-pdf.svg', name: 'PDF report', tobe: 'file-pdf', status: 'keep' },
+            { file: 'file-pdf-calendar.svg', name: 'PDF report calendar', tobe: 'file-pdf-calendar', status: 'keep' },
+            { file: 'file-pdf-custom.svg', name: 'PDF report custom', tobe: 'file-pdf-custom', status: 'keep' },
+            { file: 'file-pdf-event.svg', name: 'PDF report event', tobe: 'file-pdf-event', status: 'keep' },
+            { file: 'file-pdf-ips.svg', name: 'PDF report IPS', tobe: 'file-pdf-ips', status: 'keep' },
+            { file: 'file-pdf-rule.svg', name: 'PDF report rule', tobe: 'file-pdf-rule', status: 'keep' },
+            { file: 'file-pdf-template.svg', name: 'PDF report template', tobe: 'file-pdf-template', status: 'keep' },
+            { file: 'file-pdf-traffic.svg', name: 'PDF report traffic', tobe: 'file-pdf-traffic', status: 'keep' },
+            { file: 'file-pdf-user-activity.svg', name: 'PDF report user activity', tobe: 'file-pdf-user-activity', status: 'keep' },
+            { file: 'file-pdf-web-activity.svg', name: 'PDF report web activity', tobe: 'file-pdf-web-activity', status: 'keep' },
+            { file: 'phone.svg', name: 'Phone', tobe: 'phone', status: 'keep' },
+            { file: 'quality-channel-profile.svg', name: 'Quality channel profile', tobe: 'quality-channel-profile', status: 'keep' },
+            { file: 'radius.svg', name: 'Radius', tobe: 'radius', status: 'keep' },
+            { file: 'response-page.svg', name: 'Response page', tobe: 'response-page', status: 'keep' },
+            { file: 'response-policy-profile.svg', name: 'Response policy profile', tobe: 'response-policy-profile', status: 'keep' },
+            { file: 'reverse-proxy-profile.svg', name: 'Reverse proxy profile', tobe: 'reverse-proxy-profile', status: 'keep' },
+            { file: 'reverse-proxy-rule.svg', name: 'Reverse proxy rule', tobe: 'reverse-proxy-rule', status: 'keep' },
+            { file: 'rocket-quick-start.svg', name: 'Rocket Quick start', tobe: 'rocket-quick-start', status: 'keep' },
+            { file: 'role-permissions.svg', name: 'Role permissions', tobe: 'role-permissions', status: 'keep' },
+            { file: 'router.svg', name: 'Router', tobe: 'router', status: 'keep' },
+            { file: 'routes-preview.svg', name: 'Routes preview', tobe: 'routes-preview', status: 'keep' },
+            { file: 'routing.svg', name: 'Routing', tobe: 'routing', status: 'keep' },
+            { file: 'rule-trace.svg', name: 'Rule trace', tobe: 'rule-trace', status: 'keep' },
+            { file: 'safe-browsing.svg', name: 'Safe browsing', tobe: 'safe-browsing', status: 'keep' },
+            { file: 'scada-profile.svg', name: 'Scada profile', tobe: 'scada-profile', status: 'keep' },
+            { file: 'scada-rule.svg', name: 'Scada rule', tobe: 'scada-rule', status: 'keep' },
+            { file: 'scenarios.svg', name: 'Scenarios', tobe: 'scenarios', status: 'keep' },
+            { file: 'sd-wan-policy.svg', name: 'SD WAN policy', tobe: 'sd-wan-policy', status: 'keep' },
+            { file: 'security.svg', name: 'Security', tobe: 'security', status: 'keep' },
+            { file: 'sensors.svg', name: 'Sensors', tobe: 'sensors', status: 'keep' },
+            { file: 'server-profile.svg', name: 'Server profile', tobe: 'server-profile', status: 'keep' },
+            { file: 'server-rule.svg', name: 'Server rule', tobe: 'server-rule', status: 'keep' },
+            { file: 'service.svg', name: 'Service', tobe: 'service', status: 'keep' },
+            { file: 'service-group.svg', name: 'Service group', tobe: 'service-group', status: 'keep' },
+            { file: 'settings.svg', name: 'Settings', tobe: 'settings', status: 'keep' },
+            { file: 'shaper-pool.svg', name: 'Shaper pool', tobe: 'shaper-pool', status: 'keep' },
+            { file: 'shared-realms.svg', name: 'Shared realms', tobe: 'shared-realms', status: 'keep' },
+            { file: 'siem-tree-structure.svg', name: 'SIEM Tree system, Tree structure', tobe: 'siem-tree-structure', status: 'keep' },
+            { file: 'sla-profile.svg', name: 'SLA profile', tobe: 'sla-profile', status: 'keep' },
+            { file: 'snmp-mib-management.svg', name: 'SNMP MIB management', tobe: 'snmp-mib-management', status: 'keep' },
+            { file: 'snmp-parameters.svg', name: 'SNMP parameters', tobe: 'snmp-parameters', status: 'keep' },
+            { file: 'snmp-security-profile.svg', name: 'SNMP security profiles', tobe: 'snmp-security-profile', status: 'keep' },
+            { file: 'protocol-snmp.svg', name: 'SNMP sensor', tobe: 'protocol-snmp', status: 'keep' },
+            { file: 'software-update.svg', name: 'Software update', tobe: 'software-update', status: 'keep' },
+            { file: 'sources.svg', name: 'Sources', tobe: 'sources', status: 'keep' },
+            { file: 'ssl-inspection.svg', name: 'SSL inspection', tobe: 'ssl-inspection', status: 'keep' },
+            { file: 'ssl-monitor.svg', name: 'SSL monitor', tobe: 'ssl-monitor', status: 'keep' },
+            { file: 'ssl-profile-lock-forward.svg', name: 'SSL profile lock forward', tobe: 'ssl-profile-lock-forward', status: 'keep' },
+            { file: 'ssl-profile-lock-key.svg', name: 'SSL profile lock key', tobe: 'ssl-profile-lock-key', status: 'keep' },
+            { file: 'star-outline.svg', name: 'Star not selected', tobe: 'star-outline', status: 'keep' },
+            { file: 'star-filled.svg', name: 'Star selected', tobe: 'star-filled', status: 'keep' },
+            { file: 'stat-bar.svg', name: 'Stat bar', tobe: 'stat-bar', status: 'keep' },
+            { file: 'statistic.svg', name: 'Statistics', tobe: 'statistic', status: 'keep' },
+            { file: 'syslog.svg', name: 'Syslog', tobe: 'syslog', status: 'keep' },
+            { file: 'syslog-application.svg', name: 'Syslog applications', tobe: 'syslog-application', status: 'keep' },
+            { file: 'ta-console.svg', name: 'Ta console', tobe: 'ta-console', status: 'keep' },
+            { file: 'tags.svg', name: 'Tags', tobe: 'tags', status: 'keep' },
+            { file: 'template.svg', name: 'Template', tobe: 'template', status: 'keep' },
+            { file: 'template-group.svg', name: 'Template group', tobe: 'template-group', status: 'keep' },
+            { file: 'tenants.svg', name: 'Tenants', tobe: 'tenants', status: 'keep' },
+            { file: 'terminal-server.svg', name: 'Terminal server', tobe: 'terminal-server', status: 'keep' },
+            { file: 'time-restrictions.svg', name: 'Time restrictions', tobe: 'time-restrictions', status: 'keep' },
+            { file: 'tls-profile.svg', name: 'TLS profile', tobe: 'tls-profile', status: 'keep' },
+            { file: 'traceroute-query.svg', name: 'Traceroute query', tobe: 'traceroute-query', status: 'keep' },
+            { file: 'traffic-shaper.svg', name: 'Traffic shaping', tobe: 'traffic-shaper', status: 'keep' },
+            { file: 'user-transient.svg', name: 'Transient user', tobe: 'user-transient', status: 'keep' },
+            { file: 'tree.svg', name: 'Tree', tobe: 'tree', status: 'keep' },
+            { file: 'triggered-alert-category.svg', name: 'Triggered alert categories', tobe: 'triggered-alert-category', status: 'keep' },
+            { file: 'trusted-browsers.svg', name: 'Trusted Browsers', tobe: 'trusted-browsers', status: 'keep' },
+            { file: 'tunnel-inspection.svg', name: 'Tunnel inspection', tobe: 'tunnel-inspection', status: 'keep' },
+            { file: 'monitor-dual.svg', name: 'Two monitors', tobe: 'monitor-dual', status: 'keep' },
+            { file: 'log-incident.svg', name: 'u-nav-tree-log-incident', tobe: 'log-incident', status: 'keep' },
+            { file: 'url-category.svg', name: 'URL category', tobe: 'url-category', status: 'keep' },
+            { file: 'url-list.svg', name: 'URL list', tobe: 'url-list', status: 'keep' },
+            { file: 'url-override-domain.svg', name: 'URL override domains', tobe: 'url-override-domain', status: 'keep' },
+            { file: 'user-agent.svg', name: 'User agent', tobe: 'user-agent', status: 'keep' },
+            { file: 'user-device.svg', name: 'User and device', tobe: 'user-device', status: 'keep' },
+            { file: 'role.svg', name: 'User roles', tobe: 'role', status: 'keep' },
+            { file: 'usergate-sensor.svg', name: 'UserGate sensors', tobe: 'usergate-sensor', status: 'keep' },
+            { file: 'user-id-agent.svg', name: 'UserID agent', tobe: 'user-id-agent', status: 'keep' },
+            { file: 'user-id-agent-syslog-filter.svg', name: 'UserID agent syslog filters', tobe: 'user-id-agent-syslog-filter', status: 'keep' },
+            { file: 'user-id-log.svg', name: 'UserID Logs', tobe: 'user-id-log', status: 'keep' },
+            { file: 'user-id-sharing-profile.svg', name: 'UserID sharing profiles', tobe: 'user-id-sharing-profile', status: 'keep' },
+            { file: 'users.svg', name: 'Users', tobe: 'users', status: 'keep' },
+            { file: 'user-catalog.svg', name: 'Users catalogs', tobe: 'user-catalog', status: 'keep' },
+            { file: 'user-id-properties.svg', name: 'UsersIdProperties', tobe: 'user-id-properties', status: 'keep' },
+            { file: 'via-proxy.svg', name: 'via Proxy', tobe: 'via-proxy', status: 'keep' },
+            { file: 'vsys-profile-subsection.svg', name: 'Virtual systems profiles subsection', tobe: 'vsys-profile-subsection', status: 'keep' },
+            { file: 'vsys-section.svg', name: 'Virtual systems section', tobe: 'vsys-section', status: 'keep' },
+            { file: 'vsys-subsection.svg', name: 'Virtual systems subsection', tobe: 'vsys-subsection', status: 'keep' },
+            { file: 'vpn.svg', name: 'VPN', tobe: 'vpn', status: 'keep' },
+            { file: 'vpn-client-profile.svg', name: 'VPN client profiles', tobe: 'vpn-client-profile', status: 'keep' },
+            { file: 'vpn-monitor.svg', name: 'VPN monitor', tobe: 'vpn-monitor', status: 'keep' },
+            { file: 'vpn-network.svg', name: 'VPN network', tobe: 'vpn-network', status: 'keep' },
+            { file: 'waf-alt.svg', name: 'WAF', tobe: 'waf-alt', status: 'keep' },
+            { file: 'waf-layer.svg', name: 'WAF custom layers', tobe: 'waf-layer', status: 'keep' },
+            { file: 'waf-profile.svg', name: 'WAF profiles', tobe: 'waf-profile', status: 'keep' },
+            { file: 'waf-rule.svg', name: 'WAF rules', tobe: 'waf-rule', status: 'keep' },
+            { file: 'waf.svg', name: 'WAF-1', tobe: 'waf', status: 'keep' },
+            { file: 'protocol-wccp.svg', name: 'WCCP', tobe: 'protocol-wccp', status: 'keep' },
+            { file: 'wccp-rule.svg', name: 'WCCP rules', tobe: 'wccp-rule', status: 'keep' },
+            { file: 'web-portal.svg', name: 'Web portal', tobe: 'web-portal', status: 'keep' },
+            { file: 'websocket.svg', name: 'WebSocket', tobe: 'websocket', status: 'keep' },
+            { file: 'websocket-extension.svg', name: 'WebSocket extentions', tobe: 'websocket-extension', status: 'keep' },
+            { file: 'websocket-protocol.svg', name: 'WebSocket protocols', tobe: 'websocket-protocol', status: 'keep' },
+            { file: 'zone.svg', name: 'Zones', tobe: 'zone', status: 'keep' },
+            { file: 'connection-profile.svg', name: 'Сonnections profile', tobe: 'connection-profile', status: 'keep' },
+          ]}
+        ];
 
-        // Update Stats DOM
-        const elAsis = document.getElementById('totalAsis');
-        const elTobe = document.getElementById('totalTobe');
-        const elDiscuss = document.getElementById('totalDiscuss');
+        let currentView = 'library';
 
-        if (elAsis) elAsis.textContent = totalAsis;
-        if (elTobe) elTobe.textContent = totalTobe;
-        if (elDiscuss) elDiscuss.textContent = totalDiscuss;
-
-        const nav = document.getElementById('stickyNav');
-        const gallery = document.getElementById('gallery');
-
-
-
-        Object.entries(categories).forEach(([name, data]) => {
-            // 1. Add Nav Item
-            const navLink = document.createElement('a');
-            navLink.href = `#${data.id}`;
-            navLink.className = 'nav-item';
-            navLink.textContent = name;
-            nav.appendChild(navLink);
-
-            // 2. Build Section
-            const section = document.createElement('section');
-            section.id = data.id;
-            section.className = 'category-section';
-
-            const header = document.createElement('div');
-            header.className = 'section-header';
-            header.innerHTML = `
-                <div class="section-title">${name}</div>
-                <div class="section-badge">${data.tobe.length}</div>
-            `;
-            section.appendChild(header);
-
-            const compLayout = document.createElement('div');
-            compLayout.className = 'comparison-layout';
-
-            // AS-IS Column
-            const leftCol = document.createElement('div');
-            leftCol.innerHTML = '<div class="col-header"><span class="col-label">AS IS</span></div>';
-            const leftGrid = document.createElement('div');
-            leftGrid.className = 'icons-grid';
-
-            data.asis.forEach(icon => {
-                const card = document.createElement('div');
-                card.className = 'icon-card';
-                card.dataset.link = icon.name; // Linked Hover
-
-                // COPY LOGIC (AS IS)
-                const match = data.tobe.find(t => t.name === icon.name);
-                const copyText = match ? match.newName : icon.name.replace('.svg', '');
-                card.dataset.copy = copyText;
-
-                // Resolve path: use new name in category subfolder
-                const iconSrc = match ? `${ICON_PATH}${data.id}/${match.newName}.svg` : '';
-
-                card.innerHTML = `
-                    ${icon.status === 'duplicate' ? '<div class="status-dot duplicate" title="Дубликат"></div>' : ''}
-                    ${icon.status === 'discuss' ? '<div class="status-dot discuss" title="Обсудить"></div>' : ''}
-                    <div class="icon-preview">
-                         ${iconSrc ? `<img src="${iconSrc}" onerror="this.style.display='none';this.parentElement.innerHTML='?'">` : '?'}
-                    </div>
-                    <div class="icon-name">${icon.name.replace('.svg', '')}</div>
-                `;
-                leftGrid.appendChild(card);
+        function switchView(view) {
+            currentView = view;
+            
+            // Update active button
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                if(btn.dataset.view === view) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
             });
-            leftCol.appendChild(leftGrid);
-            compLayout.appendChild(leftCol);
+            
+            // Update Hero text
+            const heroTitle = document.getElementById('heroTitle');
+            const heroDesc = document.getElementById('heroDesc');
+            if(view === 'library') {
+                heroTitle.innerHTML = "Аудит Системы<br>Иконок '26";
+                heroDesc.innerHTML = "Сравнение исходных ассетов и новой семантической системы. 9 категорий, плоская структура.";
+            } else {
+                heroTitle.innerHTML = "Tree Nav<br>Иконки '26";
+                heroDesc.innerHTML = "221 новая иконка для дерева навигации. AS IS текущие иконки с подсвеченными конфликтами имён.";
+            }
 
-            // TO-BE Column
-            const rightCol = document.createElement('div');
-            rightCol.innerHTML = '<div class="col-header"><span class="col-label tobe">TO BE</span></div>';
-            const rightGrid = document.createElement('div');
-            rightGrid.className = 'icons-grid';
+            renderGallery();
+        }
 
-            data.tobe.forEach(icon => {
-                const card = document.createElement('div');
-                card.className = 'icon-card tobe-card';
-                card.dataset.link = icon.name; // Linked Hover
-                card.dataset.copy = icon.newName; // Copy new name
+        function renderGallery() {
+            const nav = document.getElementById('navLinks');
+            const gallery = document.getElementById('gallery');
+            
+            nav.innerHTML = '';
+            gallery.innerHTML = '';
 
-                card.innerHTML = `
-                    ${icon.merged ? '<div class="status-dot merged" title="Объединен"></div>' : ''}
-                    ${icon.discuss ? '<div class="status-dot discuss" title="Обсудить"></div>' : ''}
-                    <div class="icon-preview">
-                         <img src="${ICON_PATH}${data.id}/${icon.newName}.svg" onerror="this.style.display='none';this.parentElement.innerHTML='?'">
-                    </div>
-                    <div class="icon-name">${icon.newName}</div>
+            let totalAsis = 0;
+            let totalTobe = 0;
+            let totalDiscuss = 0;
+
+            const isLibrary = currentView === 'library';
+            const dataset = isLibrary ? Object.entries(categories) : treeCategories.map(c => [c.name, c]);
+
+            dataset.forEach(([name, data]) => {
+                totalAsis += data.asis.length;
+                if(isLibrary) {
+                    totalTobe += data.tobe.length;
+                    totalDiscuss += data.tobe.filter(i => i.discuss).length;
+                } else {
+                    totalDiscuss += data.asis.filter(i => i.status === 'discuss').length;
+                }
+
+                // 1. Add Nav Item
+                const navLink = document.createElement('a');
+                navLink.href = `#${data.id}`;
+                navLink.className = 'nav-item';
+                navLink.textContent = name;
+                nav.appendChild(navLink);
+
+                // 2. Build Section
+                const section = document.createElement('section');
+                section.id = data.id;
+                section.className = 'category-section';
+
+                const header = document.createElement('div');
+                header.className = 'section-header';
+                header.innerHTML = `
+                    <div class="section-title">${name}</div>
+                    <div class="section-badge">${isLibrary ? data.tobe.length : data.asis.length}</div>
                 `;
-                rightGrid.appendChild(card);
-            });
-            rightCol.appendChild(rightGrid);
-            compLayout.appendChild(rightCol);
+                section.appendChild(header);
 
-            section.appendChild(compLayout);
-            gallery.appendChild(section);
+                const compLayout = document.createElement('div');
+                compLayout.className = 'comparison-layout';
+
+                // AS-IS Column
+                const leftCol = document.createElement('div');
+                leftCol.innerHTML = '<div class="col-header"><span class="col-label">AS IS</span></div>';
+                const leftGrid = document.createElement('div');
+                leftGrid.className = 'icons-grid';
+
+                data.asis.forEach(icon => {
+                    const card = document.createElement('div');
+                    card.className = 'icon-card';
+                    
+                    if(isLibrary) {
+                        card.dataset.link = icon.name;
+                        const match = data.tobe.find(t => t.name === icon.name);
+                        const copyText = match ? match.newName : icon.name.replace('.svg', '');
+                        card.dataset.copy = copyText;
+                        const iconSrc = match ? `${ICON_PATH}${data.id}/${match.newName}.svg` : '';
+                        
+                        card.innerHTML = `
+                            ${icon.status === 'duplicate' ? '<div class="status-dot duplicate" title="Дубликат"></div>' : ''}
+                            ${icon.status === 'discuss' ? '<div class="status-dot discuss" title="Обсудить"></div>' : ''}
+                            <div class="icon-preview">
+                                 ${iconSrc ? `<img src="${iconSrc}" onerror="this.style.display='none';this.parentElement.innerHTML='?'">` : '?'}
+                            </div>
+                            <div class="icon-name">${icon.name.replace('.svg', '')}</div>
+                        `;
+                    } else {
+                        // Tree View Logic
+                        card.dataset.copy = icon.name;
+                        card.dataset.link = icon.file;
+                        card.innerHTML = `
+                            ${icon.status === 'duplicate' ? '<div class="status-dot duplicate" title="Дубликат"></div>' : ''}
+                            ${icon.status === 'discuss' ? '<div class="status-dot discuss" title="Обсудить"></div>' : ''}
+                            <div class="icon-preview">
+                                 <img src="${TREE_PATH}${icon.file}" onerror="this.style.display='none';this.parentElement.innerHTML='?'">
+                            </div>
+                            <div class="icon-name">${icon.name}</div>
+                        `;
+                    }
+                    
+                    leftGrid.appendChild(card);
+                });
+                leftCol.appendChild(leftGrid);
+                compLayout.appendChild(leftCol);
+
+                // TO-BE Column
+                const rightCol = document.createElement('div');
+                rightCol.innerHTML = '<div class="col-header"><span class="col-label tobe">TO BE</span></div>';
+                
+                if(isLibrary) {
+                    const rightGrid = document.createElement('div');
+                    rightGrid.className = 'icons-grid';
+
+                    data.tobe.forEach(icon => {
+                        const card = document.createElement('div');
+                        card.className = 'icon-card tobe-card';
+                        card.dataset.link = icon.name; 
+                        card.dataset.copy = icon.newName; 
+
+                        card.innerHTML = `
+                            ${icon.merged ? '<div class="status-dot merged" title="Объединен"></div>' : ''}
+                            ${icon.discuss ? '<div class="status-dot discuss" title="Обсудить"></div>' : ''}
+                            <div class="icon-preview">
+                                 <img src="${ICON_PATH}${data.id}/${icon.newName}.svg" onerror="this.style.display='none';this.parentElement.innerHTML='?'">
+                            </div>
+                            <div class="icon-name">${icon.newName}</div>
+                        `;
+                        rightGrid.appendChild(card);
+                    });
+                    rightCol.appendChild(rightGrid);
+                } else {
+                    const rightGrid = document.createElement('div');
+                    rightGrid.className = 'icons-grid';
+
+                    data.asis.forEach(icon => {
+                        const card = document.createElement('div');
+                        
+                        if (icon.tobe) {
+                            card.className = 'icon-card tobe-card';
+                            card.dataset.copy = icon.tobe;
+                            card.dataset.link = icon.file;
+                            card.innerHTML = `
+                                <div class="icon-preview">
+                                     <img src="${TREE_PATH}${icon.file}" onerror="this.style.display='none';this.parentElement.innerHTML='?'">
+                                </div>
+                                <div class="icon-name">${icon.tobe}</div>
+                            `;
+                        } else {
+                            card.className = 'icon-card';
+                            card.style.opacity = '0.3';
+                            card.dataset.link = icon.file;
+                            card.innerHTML = `
+                                <div class="icon-preview">
+                                     <div style="font-size: 20px; color: #999;">🚧</div>
+                                </div>
+                                <div class="icon-name">В процессе...</div>
+                            `;
+                        }
+                        rightGrid.appendChild(card);
+                    });
+                    rightCol.appendChild(rightGrid);
+                }
+                
+                compLayout.appendChild(rightCol);
+
+                section.appendChild(compLayout);
+                gallery.appendChild(section);
+            });
+
+            // Update Stats DOM
+            const elAsis = document.getElementById('totalAsis');
+            const elTobe = document.getElementById('totalTobe');
+            const elDiscuss = document.getElementById('totalDiscuss');
+
+            if (elAsis) elAsis.textContent = totalAsis;
+            if (elTobe) elTobe.textContent = totalTobe;
+            if (elDiscuss) elDiscuss.textContent = totalDiscuss;
+        }
+
+        
+        // Initial render
+        treeCategories[0].asis.sort((a, b) => {
+            if (a.tobe && !b.tobe) return -1;
+            if (!a.tobe && b.tobe) return 1;
+            return 0;
         });
+        renderGallery();
 
-        // Hover Sync Logic
+
+        // Hover Sync Logic (Only applies to library view)
         document.addEventListener('mouseover', (e) => {
+            
             const card = e.target.closest('.icon-card');
             if (!card) return;
             const linkName = card.dataset.link;
@@ -932,6 +1322,7 @@
         });
 
         document.addEventListener('mouseout', (e) => {
+            
             const card = e.target.closest('.icon-card');
             if (!card) return;
             const linkName = card.dataset.link;
@@ -961,7 +1352,6 @@
             document.getElementById('toastMessage').textContent = `Скопировано: ${text}`;
             toast.classList.add('visible');
 
-            // Clear previous timeout if any
             if (window.toastTimeout) clearTimeout(window.toastTimeout);
 
             window.toastTimeout = setTimeout(() => {
@@ -989,5 +1379,4 @@
 
     </script>
 </body>
-
 </html>

@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree Icons Viewer</title>
+    <style>
+        body { font-family: "Inter", sans-serif; background: #F5F5F7; padding: 40px; color: #111827; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; }
+        .icon-card { background: white; padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: all 0.2s; }
+        .icon-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+        .icon-card img { max-width: 48px; max-height: 48px; margin-bottom: 12px; }
+        .icon-name { font-size: 12px; color: #6B7280; word-break: break-word; font-family: monospace; }
+        .duplicate { border: 2px solid #EF4444; background: #FEF2F2; }
+        h1, h2 { text-align: center; margin-bottom: 20px; }
+        .conflict-section { margin-bottom: 60px; background: white; padding: 30px; border-radius: 16px; border: 2px dashed #EF4444; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .conflict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Tree & Strange Icons (221 total)</h1>
+    
+    <div class="conflict-section">
+        <h2>🔥 Конфликты (разные иконки, но одинаковые имена)</h2>
+        <div class="conflict-grid">
+            <div class="icon-card duplicate">
+                <img src="./assets/Tree_merged/Devices.svg">
+                <div class="icon-name">Devices.svg (из папки Tree)</div>
+            </div>
+            <div class="icon-card duplicate">
+                <img src="./assets/Tree_merged/dublicate_Devices.svg">
+                <div class="icon-name">dublicate_Devices.svg (из папки Strange)</div>
+            </div>
+            
+            <div class="icon-card duplicate">
+                <img src="./assets/Tree_merged/Log export.svg">
+                <div class="icon-name">Log export.svg (из папки Tree)</div>
+            </div>
+            <div class="icon-card duplicate">
+                <img src="./assets/Tree_merged/dublicate_Log export.svg">
+                <div class="icon-name">dublicate_Log export.svg (из папки Strange)</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Все 221 иконок</h2>
+    <div class="grid">
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Add transient user.svg" alt="Add transient user.svg">
+            <div class="icon-name">Add transient user.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Administrator.svg" alt="Administrator.svg">
+            <div class="icon-name">Administrator.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Alert.svg" alt="Alert.svg">
+            <div class="icon-name">Alert.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Analytics response action.svg" alt="Analytics response action.svg">
+            <div class="icon-name">Analytics response action.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Analytics rules.svg" alt="Analytics rules.svg">
+            <div class="icon-name">Analytics rules.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Analytics search.svg" alt="Analytics search.svg">
+            <div class="icon-name">Analytics search.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Analytics.svg" alt="Analytics.svg">
+            <div class="icon-name">Analytics.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Application group.svg" alt="Application group.svg">
+            <div class="icon-name">Application group.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Application profile.svg" alt="Application profile.svg">
+            <div class="icon-name">Application profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Application.svg" alt="Application.svg">
+            <div class="icon-name">Application.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Auth profile.svg" alt="Auth profile.svg">
+            <div class="icon-name">Auth profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Auth server.svg" alt="Auth server.svg">
+            <div class="icon-name">Auth server.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/BFD profiles.svg" alt="BFD profiles.svg">
+            <div class="icon-name">BFD profiles.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/BGP.svg" alt="BGP.svg">
+            <div class="icon-name">BGP.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/BYOD.svg" alt="BYOD.svg">
+            <div class="icon-name">BYOD.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Blocked VPN.svg" alt="Blocked VPN.svg">
+            <div class="icon-name">Blocked VPN.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Captive portal.svg" alt="Captive portal.svg">
+            <div class="icon-name">Captive portal.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Captive profile.svg" alt="Captive profile.svg">
+            <div class="icon-name">Captive profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Cascade Servers.svg" alt="Cascade Servers.svg">
+            <div class="icon-name">Cascade Servers.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Cascade profile.svg" alt="Cascade profile.svg">
+            <div class="icon-name">Cascade profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Cascade proxies.svg" alt="Cascade proxies.svg">
+            <div class="icon-name">Cascade proxies.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Cascade rules.svg" alt="Cascade rules.svg">
+            <div class="icon-name">Cascade rules.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Certificate.svg" alt="Certificate.svg">
+            <div class="icon-name">Certificate.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Client certificate profiles.svg" alt="Client certificate profiles.svg">
+            <div class="icon-name">Client certificate profiles.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Client rule.svg" alt="Client rule.svg">
+            <div class="icon-name">Client rule.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Commands.svg" alt="Commands.svg">
+            <div class="icon-name">Commands.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Connector.svg" alt="Connector.svg">
+            <div class="icon-name">Connector.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Console.svg" alt="Console.svg">
+            <div class="icon-name">Console.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Content filtering.svg" alt="Content filtering.svg">
+            <div class="icon-name">Content filtering.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Content type.svg" alt="Content type.svg">
+            <div class="icon-name">Content type.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/DCFW.svg" alt="DCFW.svg">
+            <div class="icon-name">DCFW.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/DHCP.svg" alt="DHCP.svg">
+            <div class="icon-name">DHCP.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/DNS.svg" alt="DNS.svg">
+            <div class="icon-name">DNS.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Dashboard.svg" alt="Dashboard.svg">
+            <div class="icon-name">Dashboard.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Device group.svg" alt="Device group.svg">
+            <div class="icon-name">Device group.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Device.svg" alt="Device.svg">
+            <div class="icon-name">Device.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Devices.svg" alt="Devices.svg">
+            <div class="icon-name">Devices.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Diagnostics OSPF.svg" alt="Diagnostics OSPF.svg">
+            <div class="icon-name">Diagnostics OSPF.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Diagnostics.svg" alt="Diagnostics.svg">
+            <div class="icon-name">Diagnostics.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Direct.svg" alt="Direct.svg">
+            <div class="icon-name">Direct.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Distributions profile.svg" alt="Distributions profile.svg">
+            <div class="icon-name">Distributions profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/DoS profiles.svg" alt="DoS profiles.svg">
+            <div class="icon-name">DoS profiles.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/DoS rules.svg" alt="DoS rules.svg">
+            <div class="icon-name">DoS rules.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Email.svg" alt="Email.svg">
+            <div class="icon-name">Email.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Endpoint codes.svg" alt="Endpoint codes.svg">
+            <div class="icon-name">Endpoint codes.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Endpoint.svg" alt="Endpoint.svg">
+            <div class="icon-name">Endpoint.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Endpoints management.svg" alt="Endpoints management.svg">
+            <div class="icon-name">Endpoints management.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Exceptions.svg" alt="Exceptions.svg">
+            <div class="icon-name">Exceptions.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/External enrichment services.svg" alt="External enrichment services.svg">
+            <div class="icon-name">External enrichment services.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Firewall.svg" alt="Firewall.svg">
+            <div class="icon-name">Firewall.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Folder.svg" alt="Folder.svg">
+            <div class="icon-name">Folder.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Gateway.svg" alt="Gateway.svg">
+            <div class="icon-name">Gateway.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Global portal.svg" alt="Global portal.svg">
+            <div class="icon-name">Global portal.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Globe 123.svg" alt="Globe 123.svg">
+            <div class="icon-name">Globe 123.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Globe search.svg" alt="Globe search.svg">
+            <div class="icon-name">Globe search.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Group-mapping.svg" alt="Group-mapping.svg">
+            <div class="icon-name">Group-mapping.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Group.svg" alt="Group.svg">
+            <div class="icon-name">Group.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/HA-cluster-1.svg" alt="HA-cluster-1.svg">
+            <div class="icon-name">HA-cluster-1.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/HA-cluster.svg" alt="HA-cluster.svg">
+            <div class="icon-name">HA-cluster.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/HIP profiles.svg" alt="HIP profiles.svg">
+            <div class="icon-name">HIP profiles.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/ICAP rules.svg" alt="ICAP rules.svg">
+            <div class="icon-name">ICAP rules.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/ICAP servers.svg" alt="ICAP servers.svg">
+            <div class="icon-name">ICAP servers.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/IDPS block IP page.svg" alt="IDPS block IP page.svg">
+            <div class="icon-name">IDPS block IP page.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/IDPS profile.svg" alt="IDPS profile.svg">
+            <div class="icon-name">IDPS profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/IDPS rules.svg" alt="IDPS rules.svg">
+            <div class="icon-name">IDPS rules.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/IDPS signatures.svg" alt="IDPS signatures.svg">
+            <div class="icon-name">IDPS signatures.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/IP list.svg" alt="IP list.svg">
+            <div class="icon-name">IP list.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Incident log.svg" alt="Incident log.svg">
+            <div class="icon-name">Incident log.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Incident schema.svg" alt="Incident schema.svg">
+            <div class="icon-name">Incident schema.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Incident.svg" alt="Incident.svg">
+            <div class="icon-name">Incident.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Info inline.svg" alt="Info inline.svg">
+            <div class="icon-name">Info inline.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Interface.svg" alt="Interface.svg">
+            <div class="icon-name">Interface.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/LLDP neighbors.svg" alt="LLDP neighbors.svg">
+            <div class="icon-name">LLDP neighbors.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/LLDP profiles.svg" alt="LLDP profiles.svg">
+            <div class="icon-name">LLDP profiles.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/LLDP statistics.svg" alt="LLDP statistics.svg">
+            <div class="icon-name">LLDP statistics.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Libraries update.svg" alt="Libraries update.svg">
+            <div class="icon-name">Libraries update.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Libraries.svg" alt="Libraries.svg">
+            <div class="icon-name">Libraries.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Load balancing.svg" alt="Load balancing.svg">
+            <div class="icon-name">Load balancing.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log DNS.svg" alt="Log DNS.svg">
+            <div class="icon-name">Log DNS.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log WebSocket.svg" alt="Log WebSocket.svg">
+            <div class="icon-name">Log WebSocket.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log browser 123.svg" alt="Log browser 123.svg">
+            <div class="icon-name">Log browser 123.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log browser abc.svg" alt="Log browser abc.svg">
+            <div class="icon-name">Log browser abc.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log browser clock.svg" alt="Log browser clock.svg">
+            <div class="icon-name">Log browser clock.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log collector.svg" alt="Log collector.svg">
+            <div class="icon-name">Log collector.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log event.svg" alt="Log event.svg">
+            <div class="icon-name">Log event.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log export.svg" alt="Log export.svg">
+            <div class="icon-name">Log export.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log idps.svg" alt="Log idps.svg">
+            <div class="icon-name">Log idps.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log mailsecurity.svg" alt="Log mailsecurity.svg">
+            <div class="icon-name">Log mailsecurity.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log normalization.svg" alt="Log normalization.svg">
+            <div class="icon-name">Log normalization.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log scada.svg" alt="Log scada.svg">
+            <div class="icon-name">Log scada.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log ssh certificate.svg" alt="Log ssh certificate.svg">
+            <div class="icon-name">Log ssh certificate.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log traffic.svg" alt="Log traffic.svg">
+            <div class="icon-name">Log traffic.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log webaccess.svg" alt="Log webaccess.svg">
+            <div class="icon-name">Log webaccess.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Log.svg" alt="Log.svg">
+            <div class="icon-name">Log.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/LogAn devices.svg" alt="LogAn devices.svg">
+            <div class="icon-name">LogAn devices.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/LogAn management.svg" alt="LogAn management.svg">
+            <div class="icon-name">LogAn management.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/MFA profile.svg" alt="MFA profile.svg">
+            <div class="icon-name">MFA profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Mail security.svg" alt="Mail security.svg">
+            <div class="icon-name">Mail security.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Modified.svg" alt="Modified.svg">
+            <div class="icon-name">Modified.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Monitor arrow.svg" alt="Monitor arrow.svg">
+            <div class="icon-name">Monitor arrow.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Monitor grachics.svg" alt="Monitor grachics.svg">
+            <div class="icon-name">Monitor grachics.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Monitor network arrows.svg" alt="Monitor network arrows.svg">
+            <div class="icon-name">Monitor network arrows.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Monitor.svg" alt="Monitor.svg">
+            <div class="icon-name">Monitor.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Morphology.svg" alt="Morphology.svg">
+            <div class="icon-name">Morphology.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/NAT and routing.svg" alt="NAT and routing.svg">
+            <div class="icon-name">NAT and routing.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/NAT, Collectors.svg" alt="NAT, Collectors.svg">
+            <div class="icon-name">NAT, Collectors.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Network-1.svg" alt="Network-1.svg">
+            <div class="icon-name">Network-1.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Network.svg" alt="Network.svg">
+            <div class="icon-name">Network.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Notification alert rule.svg" alt="Notification alert rule.svg">
+            <div class="icon-name">Notification alert rule.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Notification profile.svg" alt="Notification profile.svg">
+            <div class="icon-name">Notification profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Notification.svg" alt="Notification.svg">
+            <div class="icon-name">Notification.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Orange check.svg" alt="Orange check.svg">
+            <div class="icon-name">Orange check.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/PDF report IPS.svg" alt="PDF report IPS.svg">
+            <div class="icon-name">PDF report IPS.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/PDF report calendar.svg" alt="PDF report calendar.svg">
+            <div class="icon-name">PDF report calendar.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/PDF report custom.svg" alt="PDF report custom.svg">
+            <div class="icon-name">PDF report custom.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/PDF report event.svg" alt="PDF report event.svg">
+            <div class="icon-name">PDF report event.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/PDF report rule.svg" alt="PDF report rule.svg">
+            <div class="icon-name">PDF report rule.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/PDF report template.svg" alt="PDF report template.svg">
+            <div class="icon-name">PDF report template.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/PDF report traffic.svg" alt="PDF report traffic.svg">
+            <div class="icon-name">PDF report traffic.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/PDF report user activity.svg" alt="PDF report user activity.svg">
+            <div class="icon-name">PDF report user activity.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/PDF report web activity.svg" alt="PDF report web activity.svg">
+            <div class="icon-name">PDF report web activity.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/PDF report.svg" alt="PDF report.svg">
+            <div class="icon-name">PDF report.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Phone.svg" alt="Phone.svg">
+            <div class="icon-name">Phone.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Quality channel profile.svg" alt="Quality channel profile.svg">
+            <div class="icon-name">Quality channel profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Radius.svg" alt="Radius.svg">
+            <div class="icon-name">Radius.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Response page.svg" alt="Response page.svg">
+            <div class="icon-name">Response page.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Response policy profile.svg" alt="Response policy profile.svg">
+            <div class="icon-name">Response policy profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Reverse proxy profile.svg" alt="Reverse proxy profile.svg">
+            <div class="icon-name">Reverse proxy profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Reverse proxy rule.svg" alt="Reverse proxy rule.svg">
+            <div class="icon-name">Reverse proxy rule.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Rocket Quick start.svg" alt="Rocket Quick start.svg">
+            <div class="icon-name">Rocket Quick start.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Role permissions.svg" alt="Role permissions.svg">
+            <div class="icon-name">Role permissions.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Router.svg" alt="Router.svg">
+            <div class="icon-name">Router.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Routes preview.svg" alt="Routes preview.svg">
+            <div class="icon-name">Routes preview.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Routing.svg" alt="Routing.svg">
+            <div class="icon-name">Routing.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Rule trace.svg" alt="Rule trace.svg">
+            <div class="icon-name">Rule trace.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/SD WAN policy.svg" alt="SD WAN policy.svg">
+            <div class="icon-name">SD WAN policy.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/SIEM Tree system, Tree structure.svg" alt="SIEM Tree system, Tree structure.svg">
+            <div class="icon-name">SIEM Tree system, Tree structure.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/SLA profile.svg" alt="SLA profile.svg">
+            <div class="icon-name">SLA profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/SNMP MIB management.svg" alt="SNMP MIB management.svg">
+            <div class="icon-name">SNMP MIB management.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/SNMP parameters.svg" alt="SNMP parameters.svg">
+            <div class="icon-name">SNMP parameters.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/SNMP security profiles.svg" alt="SNMP security profiles.svg">
+            <div class="icon-name">SNMP security profiles.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/SNMP sensor.svg" alt="SNMP sensor.svg">
+            <div class="icon-name">SNMP sensor.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/SSL inspection.svg" alt="SSL inspection.svg">
+            <div class="icon-name">SSL inspection.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/SSL monitor.svg" alt="SSL monitor.svg">
+            <div class="icon-name">SSL monitor.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/SSL profile lock forward.svg" alt="SSL profile lock forward.svg">
+            <div class="icon-name">SSL profile lock forward.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/SSL profile lock key.svg" alt="SSL profile lock key.svg">
+            <div class="icon-name">SSL profile lock key.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Safe browsing.svg" alt="Safe browsing.svg">
+            <div class="icon-name">Safe browsing.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Scada profile.svg" alt="Scada profile.svg">
+            <div class="icon-name">Scada profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Scada rule.svg" alt="Scada rule.svg">
+            <div class="icon-name">Scada rule.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Scenarios.svg" alt="Scenarios.svg">
+            <div class="icon-name">Scenarios.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Security.svg" alt="Security.svg">
+            <div class="icon-name">Security.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Sensors.svg" alt="Sensors.svg">
+            <div class="icon-name">Sensors.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Server profile.svg" alt="Server profile.svg">
+            <div class="icon-name">Server profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Server rule.svg" alt="Server rule.svg">
+            <div class="icon-name">Server rule.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Service group.svg" alt="Service group.svg">
+            <div class="icon-name">Service group.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Service.svg" alt="Service.svg">
+            <div class="icon-name">Service.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Settings.svg" alt="Settings.svg">
+            <div class="icon-name">Settings.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Shaper pool.svg" alt="Shaper pool.svg">
+            <div class="icon-name">Shaper pool.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Shared realms.svg" alt="Shared realms.svg">
+            <div class="icon-name">Shared realms.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Software update.svg" alt="Software update.svg">
+            <div class="icon-name">Software update.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Sources.svg" alt="Sources.svg">
+            <div class="icon-name">Sources.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Star not selected.svg" alt="Star not selected.svg">
+            <div class="icon-name">Star not selected.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Star selected.svg" alt="Star selected.svg">
+            <div class="icon-name">Star selected.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Stat bar.svg" alt="Stat bar.svg">
+            <div class="icon-name">Stat bar.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Statistics.svg" alt="Statistics.svg">
+            <div class="icon-name">Statistics.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Syslog applications.svg" alt="Syslog applications.svg">
+            <div class="icon-name">Syslog applications.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Syslog.svg" alt="Syslog.svg">
+            <div class="icon-name">Syslog.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/TLS profile.svg" alt="TLS profile.svg">
+            <div class="icon-name">TLS profile.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Ta console.svg" alt="Ta console.svg">
+            <div class="icon-name">Ta console.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Tags.svg" alt="Tags.svg">
+            <div class="icon-name">Tags.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Template group.svg" alt="Template group.svg">
+            <div class="icon-name">Template group.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Template.svg" alt="Template.svg">
+            <div class="icon-name">Template.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Tenants.svg" alt="Tenants.svg">
+            <div class="icon-name">Tenants.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Terminal server.svg" alt="Terminal server.svg">
+            <div class="icon-name">Terminal server.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Time restrictions.svg" alt="Time restrictions.svg">
+            <div class="icon-name">Time restrictions.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Traceroute query.svg" alt="Traceroute query.svg">
+            <div class="icon-name">Traceroute query.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Traffic shaping.svg" alt="Traffic shaping.svg">
+            <div class="icon-name">Traffic shaping.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Transient user.svg" alt="Transient user.svg">
+            <div class="icon-name">Transient user.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Tree.svg" alt="Tree.svg">
+            <div class="icon-name">Tree.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Triggered alert categories.svg" alt="Triggered alert categories.svg">
+            <div class="icon-name">Triggered alert categories.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Trusted Browsers.svg" alt="Trusted Browsers.svg">
+            <div class="icon-name">Trusted Browsers.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Tunnel inspection.svg" alt="Tunnel inspection.svg">
+            <div class="icon-name">Tunnel inspection.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Two monitors.svg" alt="Two monitors.svg">
+            <div class="icon-name">Two monitors.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/URL category.svg" alt="URL category.svg">
+            <div class="icon-name">URL category.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/URL list.svg" alt="URL list.svg">
+            <div class="icon-name">URL list.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/URL override domains.svg" alt="URL override domains.svg">
+            <div class="icon-name">URL override domains.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/User agent.svg" alt="User agent.svg">
+            <div class="icon-name">User agent.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/User and device.svg" alt="User and device.svg">
+            <div class="icon-name">User and device.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/User roles.svg" alt="User roles.svg">
+            <div class="icon-name">User roles.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/UserGate sensors.svg" alt="UserGate sensors.svg">
+            <div class="icon-name">UserGate sensors.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/UserID Logs.svg" alt="UserID Logs.svg">
+            <div class="icon-name">UserID Logs.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/UserID agent syslog filters.svg" alt="UserID agent syslog filters.svg">
+            <div class="icon-name">UserID agent syslog filters.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/UserID agent.svg" alt="UserID agent.svg">
+            <div class="icon-name">UserID agent.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/UserID sharing profiles.svg" alt="UserID sharing profiles.svg">
+            <div class="icon-name">UserID sharing profiles.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Users catalogs.svg" alt="Users catalogs.svg">
+            <div class="icon-name">Users catalogs.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Users.svg" alt="Users.svg">
+            <div class="icon-name">Users.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/UsersIdProperties.svg" alt="UsersIdProperties.svg">
+            <div class="icon-name">UsersIdProperties.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/VPN client profiles.svg" alt="VPN client profiles.svg">
+            <div class="icon-name">VPN client profiles.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/VPN monitor.svg" alt="VPN monitor.svg">
+            <div class="icon-name">VPN monitor.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/VPN network.svg" alt="VPN network.svg">
+            <div class="icon-name">VPN network.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/VPN.svg" alt="VPN.svg">
+            <div class="icon-name">VPN.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Virtual systems profiles subsection.svg" alt="Virtual systems profiles subsection.svg">
+            <div class="icon-name">Virtual systems profiles subsection.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Virtual systems section.svg" alt="Virtual systems section.svg">
+            <div class="icon-name">Virtual systems section.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Virtual systems subsection.svg" alt="Virtual systems subsection.svg">
+            <div class="icon-name">Virtual systems subsection.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/WAF custom layers.svg" alt="WAF custom layers.svg">
+            <div class="icon-name">WAF custom layers.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/WAF profiles.svg" alt="WAF profiles.svg">
+            <div class="icon-name">WAF profiles.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/WAF rules.svg" alt="WAF rules.svg">
+            <div class="icon-name">WAF rules.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/WAF-1.svg" alt="WAF-1.svg">
+            <div class="icon-name">WAF-1.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/WAF.svg" alt="WAF.svg">
+            <div class="icon-name">WAF.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/WCCP rules.svg" alt="WCCP rules.svg">
+            <div class="icon-name">WCCP rules.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/WCCP.svg" alt="WCCP.svg">
+            <div class="icon-name">WCCP.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Web portal.svg" alt="Web portal.svg">
+            <div class="icon-name">Web portal.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/WebSocket extentions.svg" alt="WebSocket extentions.svg">
+            <div class="icon-name">WebSocket extentions.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/WebSocket protocols.svg" alt="WebSocket protocols.svg">
+            <div class="icon-name">WebSocket protocols.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/WebSocket.svg" alt="WebSocket.svg">
+            <div class="icon-name">WebSocket.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Zones.svg" alt="Zones.svg">
+            <div class="icon-name">Zones.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/dublicate_Devices.svg" alt="dublicate_Devices.svg">
+            <div class="icon-name">dublicate_Devices.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/dublicate_Log export.svg" alt="dublicate_Log export.svg">
+            <div class="icon-name">dublicate_Log export.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/u-nav-tree-log-incident.svg" alt="u-nav-tree-log-incident.svg">
+            <div class="icon-name">u-nav-tree-log-incident.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/via Proxy.svg" alt="via Proxy.svg">
+            <div class="icon-name">via Proxy.svg</div>
+        </div>
+        
+        <div class="icon-card">
+            <img src="./assets/Tree_merged/Сonnections profile.svg" alt="Сonnections profile.svg">
+            <div class="icon-name">Сonnections profile.svg</div>
+        </div>
+        
+    </div>
+</body>
+</html>
